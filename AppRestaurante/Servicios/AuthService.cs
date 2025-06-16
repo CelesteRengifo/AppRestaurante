@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using AppRestaurante.Modelos;
+using Microsoft.Maui.Storage;
+
 
 namespace AppRestaurante.Servicios
 {
@@ -28,15 +30,33 @@ namespace AppRestaurante.Servicios
             );
 
             var response = await _httpClient.PostAsync($"{_baseUrl}/login/", contenido);
+            var json = await response.Content.ReadAsStringAsync();
+
+            Console.WriteLine("📥 Código: " + response.StatusCode);
+            Console.WriteLine("📥 Respuesta: " + json);
 
             if (response.IsSuccessStatusCode)
             {
-                var json = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<RespuestaLogin>(json);
+                var loginData = JsonConvert.DeserializeObject<RespuestaLogin>(json);
+
+                // ✅ Verifica antes de guardar
+                if (loginData != null && loginData.access != null && loginData.refresh != null)
+                {
+                    await SecureStorage.SetAsync("access_token", loginData.access);
+                    await SecureStorage.SetAsync("refresh_token", loginData.refresh);
+                }
+                else
+                {
+                    Console.WriteLine("❌ Error: Token vacío o null");
+                }
+
+                return loginData;
             }
 
             return null;
         }
+
+
         public async Task<string> RegistrarUsuarioAsync(RegistroRequest datos)
         {
             var contenido = new StringContent(

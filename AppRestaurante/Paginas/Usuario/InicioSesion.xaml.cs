@@ -22,12 +22,12 @@ public partial class InicioSesion : ContentPage
         // Crear objeto con los datos del formulario
         var datos = new LoginRequest
         {
-            Username = entryUsuario.Text?.Trim(),
-            Password = entryClave.Text
+            username = entryUsuario.Text?.Trim(),
+            password = entryClave.Text
         };
 
         // Validar campos
-        if (string.IsNullOrWhiteSpace(datos.Username) || string.IsNullOrWhiteSpace(datos.Password))
+        if (string.IsNullOrWhiteSpace(datos.username) || string.IsNullOrWhiteSpace(datos.password))
         {
             await DisplayAlert("Error", "Debe ingresar usuario y contraseña", "OK");
             LimpiarCampos();
