@@ -42,6 +42,15 @@
                    TextColor="#FFF8E1"
                    BackgroundColor="#5D4037"
                    FontSize="16" />
+            
+            <Entry x:Name="entryEmail"
+                   Placeholder="Correo electrónico"
+                   Keyboard="Email"
+                   PlaceholderColor="#D7CCC8"
+                   TextColor="#FFF8E1"
+                   BackgroundColor="#5D4037"
+                   FontSize="16" />
+
 
             <Label Text="Seleccionar Rol"
                    TextColor="#FFF8E1"

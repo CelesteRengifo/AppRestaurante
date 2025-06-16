@@ -32,14 +32,14 @@ namespace AppRestaurante.Servicios
             var response = await _httpClient.PostAsync($"{_baseUrl}/login/", contenido);
             var json = await response.Content.ReadAsStringAsync();
 
-            Console.WriteLine("📥 Código: " + response.StatusCode);
-            Console.WriteLine("📥 Respuesta: " + json);
+            Console.WriteLine("Código: " + response.StatusCode);
+            Console.WriteLine("Respuesta: " + json);
 
             if (response.IsSuccessStatusCode)
             {
                 var loginData = JsonConvert.DeserializeObject<RespuestaLogin>(json);
 
-                // ✅ Verifica antes de guardar
+                // Verifica antes de guardar
                 if (loginData != null && loginData.access != null && loginData.refresh != null)
                 {
                     await SecureStorage.SetAsync("access_token", loginData.access);
@@ -47,7 +47,7 @@ namespace AppRestaurante.Servicios
                 }
                 else
                 {
-                    Console.WriteLine("❌ Error: Token vacío o null");
+                    Console.WriteLine("Error: Token vacío o null");
                 }
 
                 return loginData;

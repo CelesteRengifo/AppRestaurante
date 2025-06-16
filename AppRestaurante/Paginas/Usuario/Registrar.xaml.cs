@@ -33,13 +33,15 @@ public partial class Registrar : ContentPage
         string clave = entryPassword.Text;
         string nombre = entryNombre.Text?.Trim();
         string apellido = entryApellido.Text?.Trim();
+        string correo = entryEmail.Text?.Trim();
         var rolSeleccionado = pickerRoles.SelectedItem as Rol;
 
         if (string.IsNullOrWhiteSpace(usuario) ||
-            string.IsNullOrWhiteSpace(clave) ||
-            string.IsNullOrWhiteSpace(nombre) ||
-            string.IsNullOrWhiteSpace(apellido) ||
-            rolSeleccionado == null)
+        string.IsNullOrWhiteSpace(clave) ||
+        string.IsNullOrWhiteSpace(nombre) ||
+        string.IsNullOrWhiteSpace(apellido) ||
+        string.IsNullOrWhiteSpace(correo) ||
+        rolSeleccionado == null)
         {
             await DisplayAlert("Error", "Completa todos los campos.", "OK");
             LimpiarCampos();
@@ -56,6 +58,7 @@ public partial class Registrar : ContentPage
             password = clave,
             first_name = nombre,
             last_name = apellido,
+            email = correo,
             rol_id = rolSeleccionado.id
         };
 

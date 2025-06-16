@@ -8,6 +8,8 @@ namespace AppRestaurante.Paginas.Usuario;
 public partial class InicioSesion : ContentPage
 {
     private readonly AuthService _authService;
+    private bool mostrarClave = false;
+
     public InicioSesion()
 	{
 		InitializeComponent();
@@ -57,6 +59,14 @@ public partial class InicioSesion : ContentPage
             LimpiarCampos();
         }
     }
+    private void btnVerClave_Clicked(object sender, EventArgs e)
+    {
+        mostrarClave = !mostrarClave;
+        entryClave.IsPassword = !mostrarClave;
+
+        btnVerClave.Source = mostrarClave ? "ocultar.png" : "ver.png";
+    }
+
 
     private async Task RedirigirPorRol(string rol)
     {
@@ -79,8 +89,11 @@ public partial class InicioSesion : ContentPage
 
     void LimpiarCampos()
     {
-        entryUsuario.Text = " ";
-        entryClave.Text = " ";
+        entryUsuario.Text = string.Empty;
+        entryClave.Text = string.Empty;
+        mostrarClave = false;
+        entryClave.IsPassword = true;
+        btnVerClave.Source = "ver.png";
 
     }
 }

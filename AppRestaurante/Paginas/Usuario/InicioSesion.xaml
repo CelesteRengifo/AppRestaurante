@@ -45,17 +45,28 @@
             </Frame>
 
             <!-- Contraseña -->
-            <Frame BackgroundColor="#FFF8E1" CornerRadius="16" HasShadow="True" Padding="12">
-                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
-                    <Image Source="lock_icon.png" WidthRequest="20" HeightRequest="20" />
-                    <Entry x:Name="entryClave"
-                       Placeholder="Contraseña"
-                       IsPassword="True"
-                       TextColor="#3E2723"
-                       PlaceholderColor="#8D6E63"
-                       BackgroundColor="Transparent" />
-                </HorizontalStackLayout>
+            <Frame BackgroundColor="#FFF8E1" CornerRadius="16" HasShadow="True" Padding="0">
+                <Grid ColumnDefinitions="*, Auto" Padding="12" VerticalOptions="Center">
+                    <HorizontalStackLayout Spacing="12">
+                        <Image Source="lock_icon.png" WidthRequest="20" HeightRequest="20" />
+                        <Entry x:Name="entryClave"
+                   Placeholder="Contraseña"
+                   IsPassword="True"
+                   TextColor="#3E2723"
+                   PlaceholderColor="#8D6E63"
+                   BackgroundColor="Transparent" />
+                    </HorizontalStackLayout>
+
+                    <ImageButton x:Name="btnVerClave"
+                     Grid.Column="1"
+                     Source="ver.png"
+                     BackgroundColor="Transparent"
+                     Clicked="btnVerClave_Clicked"
+                     WidthRequest="30"
+                     HeightRequest="30" />
+                </Grid>
             </Frame>
+
 
             <!-- Botón login -->
             <Button x:Name="btnLogin"
