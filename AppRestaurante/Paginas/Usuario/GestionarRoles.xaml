@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRestaurante.Paginas.Usuario.GestionarRoles"
+             BackgroundColor="#3E2723"
+             Title="Gestión de Roles">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label Text="Gestión de Roles"
+               FontSize="28"
+               TextColor="#FFF8E1"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+        <SearchBar x:Name="searchBar"
+                   Placeholder="Buscar rol..."
+                   PlaceholderColor="#D7CCC8"
+                   TextColor="#FFF8E1"
+                   BackgroundColor="#5D4037"
+                   FontSize="16"
+                   TextChanged="OnSearchTextChanged" />
+
+        <CollectionView x:Name="rolesCollection"
+                        ItemsSource="{Binding RolesFiltrados}"
+                        Margin="0,10"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="#FFF8E1"
+                           CornerRadius="14"
+                           HasShadow="True"
+                           Padding="15"
+                           Margin="0,5">
+
+                        <Grid ColumnDefinitions="*, Auto, Auto"
+                              VerticalOptions="Center">
+                            <Label Text="{Binding name}"
+                                   FontSize="16"
+                                   TextColor="#3E2723"
+                                   VerticalOptions="Center" />
+
+                            <Button Text="Editar"
+                                    Grid.Column="1"
+                                    BackgroundColor="#A1887F"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    CornerRadius="10"
+                                    Padding="10,0"
+                                    HeightRequest="35"
+                                    Clicked="OnEditarClicked"
+                                    CommandParameter="{Binding}" />
+
+                            <Button Text="Eliminar"
+                                    Grid.Column="2"
+                                    Margin="5,0,0,0"
+                                    BackgroundColor="#B71C1C"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    CornerRadius="10"
+                                    Padding="10,0"
+                                    HeightRequest="35"
+                                    Clicked="OnEliminarClicked"
+                                    CommandParameter="{Binding}" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

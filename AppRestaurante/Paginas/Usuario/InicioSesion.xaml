@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRestaurante.Paginas.Usuario.InicioSesion"
+             BackgroundColor="#3E2723"
+             Title="Inicio de Sesión">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#3E2723" Offset="0.1" />
+            <GradientStop Color="#4E342E" Offset="0.5" />
+            <GradientStop Color="#5D4037" Offset="1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="CenterAndExpand">
+
+            <!-- Logo o ícono -->
+            <Image Source="cafe_logo.png"
+               HeightRequest="100"
+               HorizontalOptions="Center" />
+
+            <Label Text="¡Bienvenido(a)!"
+               FontSize="28"
+               TextColor="#FFF8E1"
+               FontAttributes="Bold"
+               HorizontalOptions="Center" />
+
+            <Label Text="Ingrese a su cuenta para continuar"
+               FontSize="14"
+               TextColor="#D7CCC8"
+               HorizontalOptions="Center" />
+
+            <!-- Usuario -->
+            <Frame BackgroundColor="#FFF8E1" CornerRadius="16" HasShadow="True" Padding="12">
+                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                    <Image Source="user_icon.png" WidthRequest="20" HeightRequest="20" />
+                    <Entry x:Name="entryUsuario"
+                       Placeholder="Usuario"
+                       TextColor="#3E2723"
+                       PlaceholderColor="#8D6E63"
+                       BackgroundColor="Transparent" />
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Contraseña -->
+            <Frame BackgroundColor="#FFF8E1" CornerRadius="16" HasShadow="True" Padding="12">
+                <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                    <Image Source="lock_icon.png" WidthRequest="20" HeightRequest="20" />
+                    <Entry x:Name="entryClave"
+                       Placeholder="Contraseña"
+                       IsPassword="True"
+                       TextColor="#3E2723"
+                       PlaceholderColor="#8D6E63"
+                       BackgroundColor="Transparent" />
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Botón login -->
+            <Button x:Name="btnLogin"
+                Text="Ingresar"
+                BackgroundColor="#A1887F"
+                TextColor="White"
+                CornerRadius="25"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Clicked="OnLoginClicked">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+                        Offset="4,4"
+                        Radius="15"
+                        Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
