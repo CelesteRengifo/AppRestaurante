@@ -6,7 +6,7 @@ namespace AppRestaurante
         public App()
         {
             InitializeComponent();
-            MainPage = new AppRestaurante.Paginas.Usuario.Registrar();
+            MainPage = new InicioSesion();
         }
     }
 }
