@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRestaurante.Paginas.Usuario.EditarUsuarioPage"
+             Title="Editar Usuario"
+             BackgroundColor="#3E2723">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Editar Usuario"
+                   FontAttributes="Bold"
+                   FontSize="22"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+
+            <Entry x:Name="entryUsername"
+                   Placeholder="Usuario"
+                   TextColor="White"
+                   PlaceholderColor="#BCAAA4"
+                   BackgroundColor="#5D4037" />
+
+            <Entry x:Name="entryNombre"
+                   Placeholder="Nombre"
+                   TextColor="White"
+                   PlaceholderColor="#BCAAA4"
+                   BackgroundColor="#5D4037" />
+
+            <Entry x:Name="entryApellido"
+                   Placeholder="Apellido"
+                   TextColor="White"
+                   PlaceholderColor="#BCAAA4"
+                   BackgroundColor="#5D4037" />
+
+            <Entry x:Name="entryEmail"
+                   Placeholder="Correo Electrónico"
+                   Keyboard="Email"
+                   TextColor="White"
+                   PlaceholderColor="#BCAAA4"
+                   BackgroundColor="#5D4037" />
+
+            <!-- Contraseña con botón de mostrar -->
+            <Grid>
+                <Entry x:Name="entryPassword"
+                       Placeholder="Contraseña"
+                       IsPassword="True"
+                       TextColor="White"
+                       PlaceholderColor="#BCAAA4"
+                       BackgroundColor="#5D4037"
+                       Margin="0"
+                       HorizontalOptions="FillAndExpand" />
+                <ImageButton x:Name="btnVerClave"
+                             Source="ocultar.png"
+                             BackgroundColor="Transparent"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"
+                             Clicked="btnVerClave_Clicked" />
+            </Grid>
+
+            <Picker x:Name="pickerRol"
+                    Title="Seleccionar Rol"
+                    BackgroundColor="#5D4037"
+                    TextColor="White" />
+
+            <Button Text="Guardar Cambios"
+                    Clicked="OnGuardarClicked"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="12"
+                    Padding="12"
+                    Margin="0,20,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

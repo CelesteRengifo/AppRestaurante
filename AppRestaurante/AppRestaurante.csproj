@@ -69,6 +69,9 @@
 	  <MauiXaml Update="Paginas\Usuario\Editar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Paginas\Usuario\EditarUsuarioPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Paginas\Usuario\GestionarRoles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
