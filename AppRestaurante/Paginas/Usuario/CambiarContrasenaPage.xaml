@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRestaurante.Paginas.Usuario.CambiarContrasenaPage"
+             Title="Cambiar Contraseña"
+             BackgroundColor="#3E2723">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15"
+                             VerticalOptions="Center"
+                             HeightRequest="500">
+
+            <Label Text="Cambiar Contraseña"
+                   FontAttributes="Bold"
+                   FontSize="22"
+                   TextColor="White"
+                   HorizontalOptions="Center" />
+
+            <!-- Contraseña actual -->
+            <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                <Entry x:Name="entryActual"
+                       Placeholder="Contraseña actual"
+                       IsPassword="True"
+                       WidthRequest="280"
+                       HeightRequest="45"
+                       VerticalOptions="Start"
+                       BackgroundColor="#5D4037"
+                       TextColor="White"
+                       PlaceholderColor="#BCAAA4" />
+                <ImageButton x:Name="btnVerActual"
+                             Source="ver.png"
+                             WidthRequest="35"
+                             HeightRequest="35"
+                             BackgroundColor="Transparent"
+                             Clicked="OnVerActualClicked" />
+            </HorizontalStackLayout>
+
+            <!-- Nueva contraseña -->
+            <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                <Entry x:Name="entryNueva"
+                       Placeholder="Nueva contraseña"
+                       IsPassword="True"
+                       WidthRequest="280"
+                       HeightRequest="45"
+                       VerticalOptions="Start"
+                       BackgroundColor="#5D4037"
+                       TextColor="White"
+                       PlaceholderColor="#BCAAA4" />
+                <ImageButton x:Name="btnVerNueva"
+                             Source="ver.png"
+                             WidthRequest="35"
+                             HeightRequest="35"
+                             BackgroundColor="Transparent"
+                             Clicked="OnVerNuevaClicked" />
+            </HorizontalStackLayout>
+
+            <!-- Confirmar contraseña -->
+            <HorizontalStackLayout Spacing="5" HorizontalOptions="Center">
+                <Entry x:Name="entryConfirmar"
+                       Placeholder="Confirmar nueva contraseña"
+                       IsPassword="True"
+                       WidthRequest="280"
+                       HeightRequest="45"
+                       VerticalOptions="Start"
+                       BackgroundColor="#5D4037"
+                       TextColor="White"
+                       PlaceholderColor="#BCAAA4" />
+                <ImageButton x:Name="btnVerConfirmar"
+                             Source="ver.png"
+                             WidthRequest="35"
+                             HeightRequest="35"
+                             BackgroundColor="Transparent"
+                             Clicked="OnVerConfirmarClicked" />
+            </HorizontalStackLayout>
+
+            <!-- Botón Guardar -->
+            <Button Text="Guardar"
+            Clicked="OnCambiarClicked"
+            BackgroundColor="#FFB300"
+            TextColor="Black"
+            FontAttributes="Bold"
+            WidthRequest="180"
+            HeightRequest="45"
+            CornerRadius="12"
+            HorizontalOptions="Center" />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

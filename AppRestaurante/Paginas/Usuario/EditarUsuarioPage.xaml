@@ -39,26 +39,6 @@
                    PlaceholderColor="#BCAAA4"
                    BackgroundColor="#5D4037" />
 
-            <!-- Contraseña con botón de mostrar -->
-            <Grid>
-                <Entry x:Name="entryPassword"
-                       Placeholder="Contraseña"
-                       IsPassword="True"
-                       TextColor="White"
-                       PlaceholderColor="#BCAAA4"
-                       BackgroundColor="#5D4037"
-                       Margin="0"
-                       HorizontalOptions="FillAndExpand" />
-                <ImageButton x:Name="btnVerClave"
-                             Source="ocultar.png"
-                             BackgroundColor="Transparent"
-                             WidthRequest="30"
-                             HeightRequest="30"
-                             HorizontalOptions="End"
-                             VerticalOptions="Center"
-                             Clicked="btnVerClave_Clicked" />
-            </Grid>
-
             <Picker x:Name="pickerRol"
                     Title="Seleccionar Rol"
                     BackgroundColor="#5D4037"

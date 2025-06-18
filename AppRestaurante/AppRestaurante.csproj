@@ -66,6 +66,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Paginas\Usuario\CambiarContrasenaPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Paginas\Usuario\Editar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

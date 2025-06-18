@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using AppRestaurante.Modelos;
+using System.Net.Http.Headers;
 
 namespace AppRestaurante.Servicios
 {
@@ -28,7 +29,22 @@ namespace AppRestaurante.Servicios
             var datos = JsonConvert.DeserializeObject<RespuestaUsuarios>(json); // Usa tu modelo contenedor
             return datos.results ?? new List<Usuario>(); // Devuelve la lista dentro de 'results'
         }
+        public async Task<bool> CambiarMiContrasenaAsync(string oldPassword, string newPassword)
+        {
+            var token = await SecureStorage.GetAsync("access_token");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
+            var datos = new
+            {
+                old_password = oldPassword,
+                new_password = newPassword
+            };
+
+            var contenido = new StringContent(JsonConvert.SerializeObject(datos), Encoding.UTF8, "application/json");
+            var respuesta = await _httpClient.PostAsync($"{_baseUrl}/cambiar_la_contraseña/", contenido);
+
+            return respuesta.IsSuccessStatusCode;
+        }
 
         public async Task<bool> ActualizarUsuarioAsync(Usuario usuario)
         {

@@ -19,12 +19,6 @@ public partial class EditarUsuarioPage : ContentPage
 
     private bool mostrarClave = false;
 
-    private void btnVerClave_Clicked(object sender, EventArgs e)
-    {
-        mostrarClave = !mostrarClave;
-        entryPassword.IsPassword = !mostrarClave;
-        btnVerClave.Source = mostrarClave ? "ver.png" : "ocultar.png";
-    }
     private async void CargarDatos()
     {
         entryUsername.Text = usuarioActual.username;
@@ -46,7 +40,6 @@ public partial class EditarUsuarioPage : ContentPage
         string nombre = entryNombre.Text?.Trim();
         string apellido = entryApellido.Text?.Trim();
         string correo = entryEmail.Text?.Trim();
-        string clave = entryPassword.Text;
         var rol = pickerRol.SelectedItem as Rol;
 
         if (string.IsNullOrWhiteSpace(username) ||
@@ -64,11 +57,6 @@ public partial class EditarUsuarioPage : ContentPage
         usuarioActual.last_name = apellido;
         usuarioActual.email = correo;
         usuarioActual.rol_id = rol.id;
-
-        if (!string.IsNullOrWhiteSpace(clave))
-        {
-            usuarioActual.password = clave;
-        }
 
         bool actualizado = await _usuarioService.ActualizarUsuarioAsync(usuarioActual);
 
