@@ -9,6 +9,16 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Agregado: lista de unidades para usar en Picker -->
+            <x:Array x:Key="UnidadesDeMedida" Type="{x:Type x:String}">
+                <x:String>Kg</x:String>
+                <x:String>g</x:String>
+                <x:String>ml</x:String>
+                <x:String>L</x:String>
+                <x:String>Unidad</x:String>
+            </x:Array>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRestaurante.Paginas.Inventario.AgregarInsumos"
+             Title="Agregar Insumo"
+             BackgroundColor="#3E2723">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#3E2723" Offset="0.1" />
+            <GradientStop Color="#4E342E" Offset="0.5" />
+            <GradientStop Color="#5D4037" Offset="1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="CenterAndExpand">
+
+            <Label Text="Agregar Insumo"
+                   FontSize="28"
+                   TextColor="#FFF8E1"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Nombre del insumo -->
+            <Frame BackgroundColor="#FFF8E1" CornerRadius="16" Padding="12" HasShadow="True">
+                <Entry x:Name="entryNombre"
+                       Placeholder="Nombre del insumo"
+                       TextColor="#3E2723"
+                       PlaceholderColor="#8D6E63"
+                       BackgroundColor="Transparent" />
+            </Frame>
+
+            <!-- Stock + Unidad (en una fila) -->
+            <Frame BackgroundColor="#FFF8E1" CornerRadius="16" Padding="12" HasShadow="True">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+
+                    <!-- Entrada de stock -->
+                    <Entry x:Name="entryStock"
+                           Placeholder="Stock"
+                           Keyboard="Numeric"
+                           TextColor="#3E2723"
+                           PlaceholderColor="#8D6E63"
+                           BackgroundColor="Transparent"
+                           Grid.Column="0" />
+
+                    <!-- Picker de unidad -->
+                    <Picker x:Name="pickerUnidad"
+                            Title="Unidad"
+                            ItemsSource="{StaticResource UnidadesDeMedida}"
+                            TextColor="#3E2723"
+                            BackgroundColor="Transparent"
+                            Grid.Column="1"
+                            WidthRequest="100" />
+                </Grid>
+            </Frame>
+
+            <!-- Precio -->
+            <Frame BackgroundColor="#FFF8E1" CornerRadius="16" Padding="12" HasShadow="True">
+                <Entry x:Name="entryPrecio"
+                       Placeholder="Precio"
+                       Keyboard="Numeric"
+                       TextColor="#3E2723"
+                       PlaceholderColor="#8D6E63"
+                       BackgroundColor="Transparent" />
+            </Frame>
+
+            <!-- Botón guardar -->
+            <Button Text="Guardar Insumo"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="btnAgregarInsumo_Clicked">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3"/>
+                </Button.Shadow>
+            </Button>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

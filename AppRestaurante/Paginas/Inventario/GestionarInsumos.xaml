@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRestaurante.Paginas.Inventario.GestionarInsumos"
+             BackgroundColor="#4E342E">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Título y Botón Agregar -->
+            <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                <Label Text="Ingredientes"
+                       FontSize="28"
+                       TextColor="#FFF8E1"
+                       FontAttributes="Bold" />
+                <Button Text="Agregar"
+                        Grid.Column="1"
+                        BackgroundColor="#6D4C41"
+                        TextColor="White"
+                        Padding="10,5"
+                        CornerRadius="12"
+                        Margin="0,0,5,0"
+                        Clicked="OnAgregarClicked"/>
+            </Grid>
+
+            <!-- Barra de búsqueda con botón Agregar integrado -->
+            <Border BackgroundColor="#FFF8E1"
+                    StrokeThickness="0"
+                    Padding="10">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
+                    <Image Source="search_icon.png"
+                           WidthRequest="20"
+                           HeightRequest="20"
+                           VerticalOptions="Center" />
+                    <Entry x:Name="BusquedaEntry"
+                           Grid.Column="1"
+                           Placeholder="Buscar ingrediente..."
+                           PlaceholderColor="#795548"
+                           TextColor="#795548"
+                           BackgroundColor="Transparent"
+                           TextChanged="OnBuscarTextoCambiado" />
+                </Grid>
+            </Border>
+
+            <!-- Lista dinámica de ingredientes -->
+            <VerticalStackLayout x:Name="ListaInsumos" Spacing="15">
+                <!-- Los insumos se agregan dinámicamente desde el código -->
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,4 +1,5 @@
-﻿using AppRestaurante.Paginas.Usuario;
+﻿using AppRestaurante.Paginas.Inventario;
+using AppRestaurante.Paginas.Usuario;
 namespace AppRestaurante
 {
     public partial class App : Application
@@ -6,7 +7,7 @@ namespace AppRestaurante
         public App()
         {
             InitializeComponent();
-            MainPage = new InicioSesion();
+            MainPage = new NavigationPage(new GestionarInsumos());
         }
     }
 }
