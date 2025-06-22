@@ -35,7 +35,6 @@
             <Frame BackgroundColor="#FFF8E1" CornerRadius="16" Padding="12" HasShadow="True">
                 <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
 
-                    <!-- Entrada de stock -->
                     <Entry x:Name="entryStock"
                            Placeholder="Stock"
                            Keyboard="Numeric"
