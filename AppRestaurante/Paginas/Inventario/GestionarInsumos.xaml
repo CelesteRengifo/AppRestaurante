@@ -13,35 +13,41 @@
                        FontSize="28"
                        TextColor="#FFF8E1"
                        FontAttributes="Bold" />
-                <Button Text="Agregar"
-                        Grid.Column="1"
-                        BackgroundColor="#6D4C41"
-                        TextColor="White"
-                        Padding="10,5"
-                        CornerRadius="12"
-                        Margin="0,0,5,0"
-                        Clicked="OnAgregarClicked"/>
             </Grid>
 
             <!-- Barra de búsqueda con botón Agregar integrado -->
             <Border BackgroundColor="#FFF8E1"
                     StrokeThickness="0"
-                    Padding="10">
+                    Padding="10">       
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10"/>
                 </Border.StrokeShape>
+
                 <Grid ColumnDefinitions="Auto,*,Auto" VerticalOptions="Center">
+                    <!-- Icono de búsqueda -->
                     <Image Source="search_icon.png"
-                           WidthRequest="20"
-                           HeightRequest="20"
-                           VerticalOptions="Center" />
+                           WidthRequest="30"
+                           HeightRequest="30"
+                           VerticalOptions="Center" />  
+
+                    <!-- Campo de texto -->
                     <Entry x:Name="BusquedaEntry"
                            Grid.Column="1"
-                           Placeholder="Buscar ingrediente..."
+                           Placeholder="Buscar insumos..."
                            PlaceholderColor="#795548"
                            TextColor="#795548"
                            BackgroundColor="Transparent"
-                           TextChanged="OnBuscarTextoCambiado" />
+                           TextChanged="OnBuscarTextoCambiado" />   
+
+                    <!-- Botón Agregar -->
+                    <Button Text="Agregar"
+                            Grid.Column="2"
+                            BackgroundColor="#6D4C41"
+                            TextColor="White"
+                            Padding="10,5"
+                            CornerRadius="12"
+                            Margin="10,0,0,0"
+                            Clicked="OnAgregarClicked" />
                 </Grid>
             </Border>
 

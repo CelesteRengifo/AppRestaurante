@@ -63,6 +63,24 @@ namespace AppRestaurante.Servicios
                 return false;
             }
         }
+        public async Task<bool> EditarInsumo(Insumo insumo)
+        {
+            try
+            {
+                var json = System.Text.Json.JsonSerializer.Serialize(insumo);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PutAsync($"insumos/{insumo.id}/", content);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al editar insumo: " + ex.Message);
+                return false;
+            }
+        }
+
+
 
         public class ApiResultado<T>
         {

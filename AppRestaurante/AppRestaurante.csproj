@@ -69,6 +69,9 @@
 	  <MauiXaml Update="Paginas\Inventario\AgregarInsumos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Paginas\Inventario\EditarInsumo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Paginas\Inventario\GestionarInsumos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

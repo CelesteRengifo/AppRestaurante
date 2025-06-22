@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppRestaurante.Paginas.Inventario.AgregarInsumos"
-             Title="Agregar Insumo"
+             x:Class="AppRestaurante.Paginas.Inventario.EditarInsumo"
+             Title="Editar Insumo"
              BackgroundColor="#3E2723">
 
     <ContentPage.Background>
@@ -16,20 +16,21 @@
     <ScrollView>
         <VerticalStackLayout Padding="30" Spacing="20">
 
-            <Label Text="Agregar Insumo"
+            <Label Text="Editar Insumo"
                    FontSize="28"
                    TextColor="#FFF8E1"
                    FontAttributes="Bold"
                    HorizontalOptions="Center" />
 
-            <!-- Nombre del insumo -->
+            <!-- Nombre del insumo (DESHABILITADO) -->
             <Border BackgroundColor="#FFF8E1" Padding="12" StrokeThickness="0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="16"/>
                 </Border.StrokeShape>
                 <Entry x:Name="entryNombre"
                        Placeholder="Nombre del insumo"
-                       TextColor="#3E2723"
+                       IsEnabled="False"
+                       TextColor="#9E9E9E"
                        PlaceholderColor="#8D6E63"
                        BackgroundColor="Transparent" />
             </Border>
@@ -40,6 +41,7 @@
                     <RoundRectangle CornerRadius="16"/>
                 </Border.StrokeShape>
                 <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+
                     <Entry x:Name="entryStock"
                            Placeholder="Stock"
                            Keyboard="Numeric"
@@ -64,15 +66,15 @@
                     <RoundRectangle CornerRadius="16"/>
                 </Border.StrokeShape>
                 <Entry x:Name="entryPrecio"
-                       Placeholder="Precio"
+                       Placeholder="Nuevo precio a sumar"
                        Keyboard="Numeric"
                        TextColor="#3E2723"
                        PlaceholderColor="#8D6E63"
                        BackgroundColor="Transparent" />
             </Border>
 
-            <!-- Botones: Guardar y Regresar -->
-            <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+            <!-- Botones -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
                 <Button Text="Regresar"
                         BackgroundColor="#8D6E63"
                         TextColor="White"
@@ -85,13 +87,13 @@
                         <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3"/>
                     </Button.Shadow>
                 </Button>
-                <Button Text="Agregar"
+                <Button Text="Guardar Cambios"
                         BackgroundColor="#A1887F"
                         TextColor="White"
                         CornerRadius="25"
                         FontAttributes="Bold"
                         HeightRequest="50"
-                        Clicked="btnAgregarInsumo_Clicked"
+                        Clicked="btnActualizar_Clicked"
                         Grid.Column="1">
                     <Button.Shadow>
                         <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3"/>

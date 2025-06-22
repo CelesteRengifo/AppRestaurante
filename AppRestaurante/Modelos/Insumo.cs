@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AppRestaurante.Modelos
 {
-    internal class Insumo
+    public class Insumo
     {
         [JsonPropertyName("id")]
         public int id { get; set; }
@@ -23,5 +23,6 @@ namespace AppRestaurante.Modelos
 
         [JsonPropertyName("unidadMedida")]
         public string unidadMedida { get; set; }
+
     }
 }
