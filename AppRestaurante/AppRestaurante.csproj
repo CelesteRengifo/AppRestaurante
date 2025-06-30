@@ -60,6 +60,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<!-- Páginas de Inventario -->
 		<MauiXaml Update="Paginas\Inventario\AgregarInsumos.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
@@ -70,6 +71,7 @@
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 
+		<!-- Páginas de Usuario (todas combinadas) -->
 		<MauiXaml Update="Paginas\Usuario\CambiarContrasenaPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
@@ -83,6 +85,9 @@
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Paginas\Usuario\InicioSesion.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Paginas\Usuario\Menu.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Paginas\Usuario\Registrar.xaml">

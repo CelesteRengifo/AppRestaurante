@@ -9,6 +9,8 @@ namespace AppRestaurante
             InitializeComponent();
             MainPage = new CambiarContrasenaPage();
             //MainPage = new NavigationPage(new Paginas.Usuario.Editar());
+            //MainPage = new AppRestaurante.Paginas.Usuario.Registrar();
+            //MainPage = new AppRestaurante.Paginas.Usuario.Menu();
         }
     }
 }
