@@ -49,8 +49,12 @@ public partial class InicioSesion : ContentPage
             Preferences.Set("usuario", loginInfo.username);
             Preferences.Set("rol", loginInfo.rol);
 
-            // Mostrar el rol detectado (hasta que tengas las páginas creadas)
+            // Mostrar el rol detectado (opcional)
             await DisplayAlert("Rol detectado", $"Rol: {loginInfo.rol}", "OK");
+
+            // Redirigir según el rol
+            await RedirigirPorRol(loginInfo.rol);
+
             LimpiarCampos();
         }
         else
@@ -58,6 +62,7 @@ public partial class InicioSesion : ContentPage
             await DisplayAlert("Error", "Credenciales incorrectas", "OK");
             LimpiarCampos();
         }
+
     }
     private void btnVerClave_Clicked(object sender, EventArgs e)
     {
@@ -86,6 +91,7 @@ public partial class InicioSesion : ContentPage
                 break;
         }
     }
+
 
     void LimpiarCampos()
     {
