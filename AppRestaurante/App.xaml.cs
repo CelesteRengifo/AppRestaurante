@@ -6,8 +6,8 @@ namespace AppRestaurante
         public App()
         {
             InitializeComponent();
-            //MainPage = new InicioSesion();
-            MainPage = new NavigationPage(new MeseroPage());
+            MainPage = new AppRestaurante.Paginas.Usuario.InicioSesion();
+            //MainPage = new NavigationPage(new AdminPage());
             //MainPage = new NavigationPage(new Paginas.Usuario.EditarUsuarioPage());
             //MainPage = new AppRestaurante.Paginas.Usuario.Registrar();
             //MainPage = new AppRestaurante.Paginas.Usuario.Menu();
