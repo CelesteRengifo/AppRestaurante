@@ -1,4 +1,4 @@
-using AppRestaurante.Modelos;
+ï»¿using AppRestaurante.Modelos;
 using AppRestaurante.Servicios;
 using System.Collections.ObjectModel;
 namespace AppRestaurante.Paginas.Usuario;
@@ -59,14 +59,14 @@ public partial class GestionarRoles : ContentPage
         var button = (Button)sender;
         var rol = (Rol)button.CommandParameter;
 
-        bool confirmar = await DisplayAlert("Confirmar", $"¿Eliminar el rol '{rol.name}'?", "Sí", "No");
+        bool confirmar = await DisplayAlert("Confirmar", $"Eliminar el rol '{rol.name}'?", "SÃ­", "No");
 
         if (confirmar)
         {
             bool eliminado = await _rolService.EliminarRolAsync(rol.id);
             if (eliminado)
             {
-                await DisplayAlert("Éxito", "Rol eliminado", "OK");
+                await DisplayAlert("Ã‰ito", "Rol eliminado", "OK");
                 await CargarRoles();
             }
             else
@@ -93,7 +93,7 @@ public partial class GestionarRoles : ContentPage
         // Validar si es igual al actual
         if (nuevoNombre == rol.name)
         {
-            await DisplayAlert("Sin cambios", "No realizaste ningún cambio.", "OK");
+            await DisplayAlert("Sin cambios", "No realizaste ningé·‘ cambio.", "OK");
             return;
         }
 
@@ -103,7 +103,7 @@ public partial class GestionarRoles : ContentPage
 
         if (actualizado)
         {
-            await DisplayAlert("Éxito", "Rol actualizado", "OK");
+            await DisplayAlert("è“Œito", "Rol actualizado", "OK");
             await CargarRoles();
         }
         else
