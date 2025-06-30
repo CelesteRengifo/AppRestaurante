@@ -1,7 +1,6 @@
-using Microsoft.Maui.Media;
-using System.Collections.ObjectModel;
 using AppRestaurante.Modelos.Clases_pedidos;
 using AppRestaurante.Servicios;
+using System.Collections.ObjectModel;
 
 namespace AppRestaurante.Paginas.Usuario;
 

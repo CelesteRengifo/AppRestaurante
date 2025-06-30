@@ -2,10 +2,10 @@ namespace AppRestaurante.Paginas.Logueo;
 
 public partial class AdminPage : ContentPage
 {
-	public AdminPage()
-	{
-		InitializeComponent();
-	}
+    public AdminPage()
+    {
+        InitializeComponent();
+    }
     private async void IrAGestionarUsuarios(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Paginas.Usuario.Editar());

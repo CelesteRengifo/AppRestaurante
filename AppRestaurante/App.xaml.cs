@@ -1,6 +1,4 @@
-﻿using AppRestaurante.Paginas.Inventario;
-using AppRestaurante.Paginas.Logueo;
-using AppRestaurante.Paginas.Usuario;
+﻿using AppRestaurante.Paginas.Logueo;
 namespace AppRestaurante
 {
     public partial class App : Application

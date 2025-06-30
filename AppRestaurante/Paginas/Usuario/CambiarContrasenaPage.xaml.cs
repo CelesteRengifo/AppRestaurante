@@ -1,6 +1,4 @@
 using AppRestaurante.Servicios;
-using Microsoft.Maui.Controls;
-using System.Net.Http.Headers;
 namespace AppRestaurante.Paginas.Usuario;
 
 public partial class CambiarContrasenaPage : ContentPage

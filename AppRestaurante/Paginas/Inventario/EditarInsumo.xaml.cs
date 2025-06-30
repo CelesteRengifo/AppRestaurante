@@ -1,9 +1,6 @@
-using System;
-using System.Globalization;
-using Microsoft.Maui.Controls;
 using AppRestaurante.Modelos;
 using AppRestaurante.Servicios;
-using AppRestaurante.Paginas.Inventario;
+using System.Globalization;
 
 namespace AppRestaurante.Paginas.Inventario
 {

@@ -1,11 +1,6 @@
 using AppRestaurante.Modelos;
 using AppRestaurante.Servicios;
-using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AppRestaurante.Paginas.Inventario
 {
@@ -121,7 +116,7 @@ namespace AppRestaurante.Paginas.Inventario
                 new ColumnDefinition(GridLength.Auto),
                 new ColumnDefinition(GridLength.Auto)
             },
-                        RowDefinitions = new RowDefinitionCollection
+                RowDefinitions = new RowDefinitionCollection
             {
                 new RowDefinition(GridLength.Auto), // Fila 0: nombre y botones
                 new RowDefinition(GridLength.Auto), // Fila 1: stock + precio

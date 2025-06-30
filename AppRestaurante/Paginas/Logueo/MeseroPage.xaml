@@ -11,15 +11,18 @@
         </LinearGradientBrush>
     </ContentPage.Background>
 
-    <VerticalStackLayout>
+        <VerticalStackLayout>
         <Label Text="Bienvenido, Meserito 👑"
-               FontSize="28"
-               Background="MediumAquamarine"
-               TextColor="Black"
-               HorizontalOptions="Center" />
+                FontSize="28"
+                Background="MediumAquamarine"
+                TextColor="Black"
+                HorizontalOptions="Center" />
+
         <Button Text="Menu"
-                BackgroundColor="#6D4C41"
-                TextColor="White"
-                Clicked="IrAMenu" />
+                 BackgroundColor="#6D4C41"
+                 TextColor="White"
+                 Clicked="IrAMenu" />
     </VerticalStackLayout>
+    
 </ContentPage>
+    
