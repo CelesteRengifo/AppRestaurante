@@ -1,5 +1,3 @@
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Storage;
 using AppRestaurante.Modelos;
 using AppRestaurante.Servicios;
 namespace AppRestaurante.Paginas.Usuario;
@@ -11,8 +9,8 @@ public partial class InicioSesion : ContentPage
     private bool mostrarClave = false;
 
     public InicioSesion()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
         _authService = new AuthService();
     }
     private async void OnLoginClicked(object sender, EventArgs e)

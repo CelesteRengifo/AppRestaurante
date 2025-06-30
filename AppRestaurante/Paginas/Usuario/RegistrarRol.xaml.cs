@@ -1,4 +1,3 @@
-using Microsoft.Maui.Controls;
 using AppRestaurante.Modelos;
 using AppRestaurante.Servicios;
 namespace AppRestaurante.Paginas.Usuario;
@@ -7,7 +6,7 @@ public partial class RegistrarRol : ContentPage
 {
     private readonly RolService _rolService;
     public RegistrarRol()
-	{
+    {
         InitializeComponent();
         _rolService = new RolService();
     }

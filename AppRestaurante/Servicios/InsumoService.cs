@@ -1,8 +1,6 @@
-﻿using System.Net.Http;
+﻿using AppRestaurante.Modelos;
 using System.Net.Http.Json;
 using System.Text;
-using System.Threading.Tasks;
-using AppRestaurante.Modelos;
 
 namespace AppRestaurante.Servicios
 {

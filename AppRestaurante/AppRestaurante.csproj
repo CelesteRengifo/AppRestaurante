@@ -70,6 +70,12 @@
 		<MauiXaml Update="Paginas\Inventario\GestionarInsumos.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Paginas\Logueo\AdminPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Paginas\Logueo\MeseroPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 
 		<!-- Páginas de Usuario (todas combinadas) -->
 		<MauiXaml Update="Paginas\Usuario\CambiarContrasenaPage.xaml">

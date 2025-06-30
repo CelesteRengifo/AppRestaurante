@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRestaurante.Paginas.Logueo.AdminPage"
+             Title="">
+    
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#3E2723" Offset="0.1" />
+            <GradientStop Color="#4E342E" Offset="0.5" />
+            <GradientStop Color="#5D4037" Offset="1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+    <VerticalStackLayout>
+        <Label Text="Bienvenido, Administrador 👑"
+           FontSize="28"
+           Background="MediumAquamarine"
+           TextColor="Black"
+           HorizontalOptions="Center" />
+
+        <Button Text="Gestionar Usuarios"
+            BackgroundColor="#6D4C41"
+            TextColor="White"
+            Clicked="IrAGestionarUsuarios" />
+
+        <Button Text="Gestionar Roles"
+            BackgroundColor="#6D4C41"
+            TextColor="White"
+            Clicked="IrAGestionarRoles" />
+
+        <Button Text="Registrar Usuario"
+            BackgroundColor="#6D4C41"
+            TextColor="White"
+            Clicked="IrARegistrarUsuario" />
+
+        <Button Text="Registrar Rol"
+            BackgroundColor="#6D4C41"
+            TextColor="White"
+            Clicked="IrARegistrarRol" />
+    </VerticalStackLayout>
+</ContentPage>
