@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRestaurante.Paginas.Usuario.Menu"
+             Title="Carta de Menú">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="15">
+
+        <!-- Entrada de número de mesa -->
+        <VerticalStackLayout Grid.Row="0" Spacing="10">
+            <Label Text="Seleccione una Mesa:" FontSize="18" />
+            <Picker x:Name="MesaPicker"
+            ItemDisplayBinding="{Binding Id}"
+            Title="Seleccione una mesa" />
+        </VerticalStackLayout>
+
+        <!-- Lista de platos -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="10">
+
+                <Label Text="Menú" FontSize="20" FontAttributes="Bold" />
+
+                <CollectionView x:Name="PlatosCollection" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="LightGray" CornerRadius="10" Padding="10" Margin="0,5">
+                                <Grid ColumnDefinitions="Auto,*,Auto" Padding="5" ColumnSpacing="10">
+
+                                    <!-- Imagen del plato -->
+                                    <Image Source="{Binding Imagen}"
+                                           WidthRequest="80"
+                                           HeightRequest="80"
+                                           Aspect="AspectFill"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+                                    <!-- Información del plato -->
+                                    <VerticalStackLayout Grid.Column="1" Padding="10,0">
+                                        <Label Text="{Binding Name}" 
+                                               FontSize="16"
+                                               FontAttributes="Bold"
+                                               TextColor="Black" />
+
+                                        <Label Text="{Binding TextoCantidad}" 
+                                               FontSize="14" />
+
+                                        <Label Text="{Binding Precio, StringFormat='Precio: S/. {0:F2}'}"
+                                               FontSize="14"
+                                               TextColor="DarkGreen" />
+                                    </VerticalStackLayout>
+
+                                    <!-- Stepper para cantidad -->
+                                    <Stepper Grid.Column="2"
+                                             Minimum="0"
+                                             Maximum="20"
+                                             Increment="1"
+                                             Value="{Binding Cantidad, Mode=TwoWay}"
+                                             ValueChanged="StepperPlato_ValueChanged"
+                                             WidthRequest="100"
+                                             VerticalOptions="Center" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Botón para realizar pedido -->
+        <Button Grid.Row="2"
+                Text="Realizar Pedido"
+                Clicked="OnRealizarPedidoClicked"
+                BackgroundColor="DarkGreen"
+                TextColor="White"
+                FontAttributes="Bold"
+                Margin="0,10,0,0"/>
+    </Grid>
+</ContentPage>
