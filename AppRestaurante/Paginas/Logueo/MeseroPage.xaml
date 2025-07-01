@@ -16,8 +16,8 @@
         <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="CenterAndExpand">
 
             <!-- Ícono o logo del mesero -->
-            <Image Source="cafe_logo.png"
-                   HeightRequest="100"
+            <Image Source="logoinicio.png"
+                   HeightRequest="200"
                    HorizontalOptions="Center" />
 
             <Label Text="¡Bienvenido, Meserito!"
