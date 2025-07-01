@@ -6,42 +6,32 @@
     xmlns:local="clr-namespace:AppRestaurante"
     xmlns:usuario="clr-namespace:AppRestaurante.Paginas.Usuario"
     xmlns:inv="clr-namespace:AppRestaurante.Paginas.Inventario"
+    xmlns:logueo="clr-namespace:AppRestaurante.Paginas.Logueo"
     Shell.FlyoutBehavior="Disabled"
     Title="AppRestaurante">
     <!-- xmlns:paginas="clr-namespace:AppRestaurante.Paginas" -->
 
-    <!-- Página de inicio o Home -->
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
 
     <!-- Página de inicio de sesión -->
     <ShellContent
-        Title="Inicio de Sesión"
         ContentTemplate="{DataTemplate usuario:InicioSesion}"
         Route="InicioSesion" />
 
+    <!-- Página Agregar Insumo -->
     <ShellContent
         Title="Agregar Insumo"
         ContentTemplate="{DataTemplate inv:AgregarInsumos}"
         Route="AgregarInsumos" />
+
     <!-- Páginas según el rol -->
-    <!--
     <ShellContent
         Title="Administrador"
-        ContentTemplate="{DataTemplate paginas:AdministradorPage}"
+        ContentTemplate="{DataTemplate logueo:AdminPage}"
         Route="AdministradorPage" />
 
     <ShellContent
         Title="Mesero"
-        ContentTemplate="{DataTemplate paginas:MeseroPage}"
+        ContentTemplate="{DataTemplate logueo:MeseroPage}"
         Route="MeseroPage" />
-
-    <ShellContent
-        Title="Cocinero"
-        ContentTemplate="{DataTemplate paginas:CocineroPage}"
-        Route="CocineroPage" />
--->
 
 </Shell>

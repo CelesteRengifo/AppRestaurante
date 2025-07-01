@@ -29,7 +29,7 @@ public partial class InicioSesion : ContentPage
         // Validar campos
         if (string.IsNullOrWhiteSpace(datos.username) || string.IsNullOrWhiteSpace(datos.password))
         {
-            await DisplayAlert("Error", "Debe ingresar usuario y contraseña", "OK");
+            // Puedes mostrar un mensaje de error si lo deseas
             LimpiarCampos();
             return;
         }
@@ -39,29 +39,23 @@ public partial class InicioSesion : ContentPage
 
         if (loginInfo != null)
         {
-            // Mostrar mensaje de bienvenida
-            await DisplayAlert("Bienvenido", $"Hola {loginInfo.first_name}", "OK");
-
             // Guardar datos persistentes
             Preferences.Set("accessToken", loginInfo.access);
             Preferences.Set("usuario", loginInfo.username);
             Preferences.Set("rol", loginInfo.rol);
 
-            // Mostrar el rol detectado (opcional)
-            await DisplayAlert("Rol detectado", $"Rol: {loginInfo.rol}", "OK");
-
-            // Redirigir según el rol
+            // Redirigir directamente según el rol
             await RedirigirPorRol(loginInfo.rol);
 
             LimpiarCampos();
         }
         else
         {
-            await DisplayAlert("Error", "Credenciales incorrectas", "OK");
+            // Si deseas mantener un mensaje de error aquí, puedes dejarlo
             LimpiarCampos();
         }
-
     }
+
     private void btnVerClave_Clicked(object sender, EventArgs e)
     {
         mostrarClave = !mostrarClave;
@@ -89,6 +83,7 @@ public partial class InicioSesion : ContentPage
                 break;
         }
     }
+
 
 
     void LimpiarCampos()
