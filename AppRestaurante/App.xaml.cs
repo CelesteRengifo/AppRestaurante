@@ -6,7 +6,7 @@ namespace AppRestaurante
         public App()
         {
             InitializeComponent();
-            MainPage = new AppRestaurante.Paginas.Usuario.Menu();
+            MainPage = new AppRestaurante.Paginas.Usuario.AgregarPlatos();
         }
     }
 }
