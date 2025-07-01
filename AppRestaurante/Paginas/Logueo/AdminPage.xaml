@@ -81,6 +81,30 @@
                 </Button.Shadow>
             </Button>
 
+            <Button Text="Agregar Insumos"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="IrAAgregarInsumo">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Text="Gestionar Insumos"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="IrAGestionarInsumo">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
