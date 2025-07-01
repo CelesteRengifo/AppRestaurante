@@ -6,10 +6,12 @@
             BackgroundColor="#3E2723">
     <VerticalStackLayout Padding="20" Spacing="15">
         <Label Text="Nombre del plato:" TextColor="#EDE7E0"/>
-        <Entry x:Name="NombreEntry" Placeholder="Ej: Arroz chaufa"/>
+        <Entry x:Name="NombreEntry" Placeholder="Ej: Arroz chaufa"
+               TextColor="#EDE7E0"/>
 
         <Label Text="Precio:" TextColor="#EDE7E0"/>
-        <Entry x:Name="PrecioEntry" Keyboard="Numeric" Placeholder="Ej: 18"/>
+        <Entry x:Name="PrecioEntry" Keyboard="Numeric" Placeholder="Ej: 18"
+               TextColor="#EDE7E0"/>
 
         <Button Text="Seleccionar Imagen" BackgroundColor="#EDE7E0" TextColor="#3E2723" 
                 Clicked="SeleccionarImagen_Clicked"/>
