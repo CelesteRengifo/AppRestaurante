@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppRestaurante.Paginas.Logueo.AdminPage"
-             Title="">
+             BackgroundColor="#3E2723"
+             Title="Administrador">
     
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
@@ -11,32 +12,99 @@
             <GradientStop Color="#5D4037" Offset="1" />
         </LinearGradientBrush>
     </ContentPage.Background>
-    
-    <VerticalStackLayout>
-        <Label Text="Bienvenido, Administrador 👑"
-           FontSize="28"
-           Background="MediumAquamarine"
-           TextColor="Black"
-           HorizontalOptions="Center" />
 
-        <Button Text="Gestionar Usuarios"
-            BackgroundColor="#6D4C41"
-            TextColor="White"
-            Clicked="IrAGestionarUsuarios" />
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="CenterAndExpand">
 
-        <Button Text="Gestionar Roles"
-            BackgroundColor="#6D4C41"
-            TextColor="White"
-            Clicked="IrAGestionarRoles" />
+            <!-- Logo o ícono -->
+            <Image Source="cafe_logo.png"
+                   HeightRequest="100"
+                   HorizontalOptions="Center" />
 
-        <Button Text="Registrar Usuario"
-            BackgroundColor="#6D4C41"
-            TextColor="White"
-            Clicked="IrARegistrarUsuario" />
+            <Label Text="Bienvenido, Administrador"
+                   FontSize="28"
+                   TextColor="#FFF8E1"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
 
-        <Button Text="Registrar Rol"
-            BackgroundColor="#6D4C41"
-            TextColor="White"
-            Clicked="IrARegistrarRol" />
-    </VerticalStackLayout>
+            <Label Text="Gestiona usuarios y roles del sistema"
+                   FontSize="14"
+                   TextColor="#D7CCC8"
+                   HorizontalOptions="Center" />
+
+            <!-- Botones con estilo unificado -->
+            <Button Text="Gestionar Usuarios"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="IrAGestionarUsuarios">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Text="Gestionar Roles"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="IrAGestionarRoles">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Text="Registrar Usuario"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="IrARegistrarUsuario">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Text="Registrar Rol"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="IrARegistrarRol">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Text="Agregar Insumos"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="IrAAgregarInsumo">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Text="Gestionar Insumos"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="IrAGestionarInsumo">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

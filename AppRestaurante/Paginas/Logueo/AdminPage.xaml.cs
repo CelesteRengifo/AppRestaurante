@@ -25,4 +25,14 @@ public partial class AdminPage : ContentPage
     {
         await Navigation.PushAsync(new Paginas.Usuario.RegistrarRol());
     }
+
+    private async void IrAAgregarInsumo(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Paginas.Inventario.AgregarInsumos());
+    }
+
+    private async void IrAGestionarInsumo(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Paginas.Inventario.GestionarInsumos());
+    }
 }

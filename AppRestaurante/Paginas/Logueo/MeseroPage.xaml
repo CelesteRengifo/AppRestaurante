@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppRestaurante.Paginas.Logueo.MeseroPage"
-             Title="">
+             Background="#3E2723"
+             Title="Mesero">
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
             <GradientStop Color="#3E2723" Offset="0.1" />
@@ -11,18 +12,43 @@
         </LinearGradientBrush>
     </ContentPage.Background>
 
-        <VerticalStackLayout>
-        <Label Text="Bienvenido, Meserito 👑"
-                FontSize="28"
-                Background="MediumAquamarine"
-                TextColor="Black"
-                HorizontalOptions="Center" />
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="CenterAndExpand">
 
-        <Button Text="Menu"
-                 BackgroundColor="#6D4C41"
-                 TextColor="White"
-                 Clicked="IrAMenu" />
-    </VerticalStackLayout>
-    
+            <!-- Ícono o logo del mesero -->
+            <Image Source="cafe_logo.png"
+                   HeightRequest="100"
+                   HorizontalOptions="Center" />
+
+            <Label Text="¡Bienvenido, Meserito!"
+                   FontSize="28"
+                   TextColor="#FFF8E1"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Accede al menú y gestiona tus pedidos"
+                   FontSize="14"
+                   TextColor="#D7CCC8"
+                   HorizontalOptions="Center" />
+
+            <!-- Botón para ir al menú -->
+            <Button Text="Ver Menú"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="IrAMenu">
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="4,4"
+                            Radius="15"
+                            Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
     
