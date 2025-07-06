@@ -19,6 +19,13 @@
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Spacing="10">
 
+                <Label x:Name="DiaLabel"
+                   FontSize="18"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,10,0,0"/>
+
                 <Label Text="Menú"  TextColor="#EDE7E0" FontSize="20" FontAttributes="Bold" />
 
                 <CollectionView x:Name="PlatosCollection" SelectionMode="None">

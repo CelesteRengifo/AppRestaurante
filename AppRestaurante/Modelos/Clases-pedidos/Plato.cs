@@ -13,6 +13,8 @@ namespace AppRestaurante.Modelos.Clases_pedidos
         public string Name { get; set; }
         public decimal Precio { get; set; }
         public string Imagen { get; set; }
+        public List<Dia> Dias { get; set; }
+
 
         private int cantidad;
         public int Cantidad

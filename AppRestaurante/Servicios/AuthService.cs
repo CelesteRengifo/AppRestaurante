@@ -87,7 +87,7 @@ namespace AppRestaurante.Servicios
         public async Task<List<Plato>> ObtenerPlatosAsync()
         {
             var todosLosPlatos = new List<Plato>();
-            string url = $"{_baseUrl}/platos/";
+            string url = $"{_baseUrl}/platos_del_dia/";
 
             var opciones = new JsonSerializerOptions
             {
@@ -115,9 +115,9 @@ namespace AppRestaurante.Servicios
                         {
                             p.Imagen = "https://lp5-backend.jmtqu4.easypanel.host" + p.Imagen;
                         }
-                    }
 
-                    todosLosPlatos.AddRange(pagina.Results);
+                        todosLosPlatos.Add(p);
+                    }
                 }
 
                 url = pagina?.Next;
