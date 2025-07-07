@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AppRestaurante"
     xmlns:usuario="clr-namespace:AppRestaurante.Paginas.Usuario"
-    xmlns:inv="clr-namespace:AppRestaurante.Paginas.Inventario"
+
     xmlns:logueo="clr-namespace:AppRestaurante.Paginas.Logueo"
     Shell.FlyoutBehavior="Disabled"
     Title="AppRestaurante">
@@ -16,12 +16,6 @@
     <ShellContent
         ContentTemplate="{DataTemplate usuario:InicioSesion}"
         Route="InicioSesion" />
-
-    <!-- Página Agregar Insumo -->
-    <ShellContent
-        Title="Agregar Insumo"
-        ContentTemplate="{DataTemplate inv:AgregarInsumos}"
-        Route="AgregarInsumos" />
 
     <!-- Páginas según el rol -->
     <ShellContent

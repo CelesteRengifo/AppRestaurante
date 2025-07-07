@@ -2,7 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppRestaurante.Paginas.Logueo.MeseroPage"
-             Title="">
+             Title="Mesero">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cerrar sesión"
+                     IconImageSource="logout.png"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="CerrarSesion"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
             <GradientStop Color="#3E2723" Offset="0.1" />
@@ -11,18 +20,36 @@
         </LinearGradientBrush>
     </ContentPage.Background>
 
-        <VerticalStackLayout>
-        <Label Text="Bienvenido, Meserito 👑"
-                FontSize="28"
-                Background="MediumAquamarine"
-                TextColor="Black"
-                HorizontalOptions="Center" />
+    <ScrollView>
+        <Grid Padding="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <Button Text="Menu"
-                 BackgroundColor="#6D4C41"
-                 TextColor="White"
-                 Clicked="IrAMenu" />
-    </VerticalStackLayout>
-    
+            <VerticalStackLayout Grid.Row="1" Spacing="25">
+
+                <Image Source="logoinicio.png"
+                       HeightRequest="200"
+                       HorizontalOptions="Center" />
+
+                <!-- Texto centrado -->
+                <Label x:Name="lblBienvenida"
+                       FontSize="22"
+                       TextColor="#FFF8E1"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center" />
+
+                <Button Text="Menú"
+                        BackgroundColor="#A1887F"
+                        TextColor="White"
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        Clicked="IrAMenu" />
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
 </ContentPage>
-    

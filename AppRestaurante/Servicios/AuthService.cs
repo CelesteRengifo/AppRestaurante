@@ -76,40 +76,44 @@ namespace AppRestaurante.Servicios
 
         public async Task<List<Plato>> ObtenerPlatosAsync()
         {
-            try
+            var todosLosPlatos = new List<Plato>();
+            string url = $"{_baseUrl}/platos_del_dia/";
+
+            var opciones = new JsonSerializerOptions
             {
-                var response = await _httpClient.GetAsync($"{_baseUrl}/platos/");
+                PropertyNameCaseInsensitive = true
+            };
+
+            while (!string.IsNullOrEmpty(url))
+            {
+                var response = await _httpClient.GetAsync(url);
 
                 if (!response.IsSuccessStatusCode)
                 {
                     var error = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error del servidor: {response.StatusCode}\n{error}");
+                    throw new Exception($"Error al obtener platos: {response.StatusCode}\n{error}");
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
+                var pagina = System.Text.Json.JsonSerializer.Deserialize<PlatoResponse>(json, opciones);
 
-                var opciones = new JsonSerializerOptions
+                if (pagina?.Results != null)
                 {
-                    PropertyNameCaseInsensitive = true
-                };
-
-                var datos = System.Text.Json.JsonSerializer.Deserialize<PlatoResponse>(json, opciones);
-                var platos = datos?.Results ?? new List<Plato>();
-
-                foreach (var p in platos)
-                {
-                    if (!string.IsNullOrWhiteSpace(p.Imagen) && !p.Imagen.StartsWith("http"))
+                    foreach (var p in pagina.Results)
                     {
-                        p.Imagen = "https://lp5-backend.jmtqu4.easypanel.host" + p.Imagen;
+                        if (!string.IsNullOrWhiteSpace(p.Imagen) && !p.Imagen.StartsWith("http"))
+                        {
+                            p.Imagen = "https://lp5-backend.jmtqu4.easypanel.host" + p.Imagen;
+                        }
+
+                        todosLosPlatos.Add(p);
                     }
                 }
 
-                return platos;
+                url = pagina?.Next;
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener platos desde la API: " + ex.Message);
-            }
+
+            return todosLosPlatos;
         }
 
         public async Task EnviarPedidoAsync(Pedidos pedido)
@@ -158,6 +162,30 @@ namespace AppRestaurante.Servicios
             catch (Exception ex)
             {
                 throw new Exception("Error al obtener mesas desde la API: " + ex.Message);
+            }
+        }
+
+        public async Task SubirPlatoAsync(string nombre, int precio, Stream imagenStream, string nombreArchivo)
+        {
+            var form = new MultipartFormDataContent();
+
+            // Agrega los campos de texto
+            form.Add(new StringContent(nombre), "name");
+            form.Add(new StringContent(precio.ToString(System.Globalization.CultureInfo.InvariantCulture)), "precio");
+
+            // Agrega la imagen como archivo
+            var imagenContent = new StreamContent(imagenStream);
+            imagenContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/jpeg"); // o "image/png" según el tipo
+
+            form.Add(imagenContent, "imagen", nombreArchivo);
+
+            // Envía la solicitud POST
+            var response = await _httpClient.PostAsync($"{_baseUrl}/platos/", form);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Error al subir plato: {response.StatusCode}\n{error}");
             }
         }
     }

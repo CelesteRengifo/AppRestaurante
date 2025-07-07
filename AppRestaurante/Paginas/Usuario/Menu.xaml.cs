@@ -14,9 +14,14 @@ public partial class Menu : ContentPage
     public Menu()
     {
         InitializeComponent();
+        string dia = DateTime.Now.ToString("dddd", new System.Globalization.CultureInfo("es-ES"));
+        DiaLabel.Text = $"Hoy es {dia.Substring(0, 1).ToUpper() + dia.Substring(1)}";
+
         CargarMenuDesdeApi();
         CargarMesasDesdeApi();
     }
+
+
 
     private async Task CargarMesasDesdeApi()
     {

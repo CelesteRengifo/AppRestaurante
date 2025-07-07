@@ -23,7 +23,7 @@
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
-		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
+		<!-- Windows packaging -->
 		<WindowsPackageType>None</WindowsPackageType>
 
 		<!-- Supported platforms -->
@@ -71,20 +71,27 @@
 		<MauiXaml Update="Paginas\Inventario\GestionarInsumos.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+
+		<!-- Páginas de Logueo -->
 		<MauiXaml Update="Paginas\Logueo\AdminPage.xaml">
-		  <Generator>MSBuild:Compile</Generator>
+			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 		<MauiXaml Update="Paginas\Logueo\MeseroPage.xaml">
-		  <Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="Paginas\Reportes\GraficoVentasPage.xaml">
-		  <Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
-		<MauiXaml Update="Paginas\Reportes\ReporteVentasPage.xaml">
-		  <Generator>MSBuild:Compile</Generator>
+			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
 
-		<!-- Páginas de Usuario (todas combinadas) -->
+		<!-- Páginas de Reportes -->
+		<MauiXaml Update="Paginas\Reportes\GraficoVentasPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+		<MauiXaml Update="Paginas\Reportes\ReporteVentasPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
+
+		<!-- Páginas de Usuario -->
+		<MauiXaml Update="Paginas\Usuario\AgregarPlatos.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Paginas\Usuario\CambiarContrasenaPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
