@@ -1,7 +1,7 @@
 using AppRestaurante.Modelos;
 using AppRestaurante.Servicios;
-namespace AppRestaurante.Paginas.Usuario;
 
+namespace AppRestaurante.Paginas.Usuario;
 
 public partial class InicioSesion : ContentPage
 {
@@ -13,26 +13,42 @@ public partial class InicioSesion : ContentPage
         InitializeComponent();
         _authService = new AuthService();
     }
+
     private async void OnLoginClicked(object sender, EventArgs e)
     {
         // Animación del botón
         await btnLogin.ScaleTo(0.95, 100);
         await btnLogin.ScaleTo(1, 100);
 
-        // Crear objeto con los datos del formulario
-        var datos = new LoginRequest
-        {
-            username = entryUsuario.Text?.Trim(),
-            password = entryClave.Text
-        };
+        var username = entryUsuario.Text?.Trim();
+        var password = entryClave.Text;
 
-        // Validar campos
-        if (string.IsNullOrWhiteSpace(datos.username) || string.IsNullOrWhiteSpace(datos.password))
+        // Validación de campos vacíos
+        if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
         {
-            // Puedes mostrar un mensaje de error si lo deseas
-            LimpiarCampos();
+            await DisplayAlert("Campos vacíos", "Por favor complete todos los campos.", "OK");
             return;
         }
+
+        // Validación de longitud mínima
+        if (username.Length < 3)
+        {
+            await DisplayAlert("Usuario inválido", "El nombre de usuario debe tener al menos 3 caracteres.", "OK");
+            return;
+        }
+
+        if (password.Length < 4)
+        {
+            await DisplayAlert("Contraseña inválida", "La contraseña debe tener al menos 4 caracteres.", "OK");
+            return;
+        }
+
+        // Crear objeto para enviar al servicio
+        var datos = new LoginRequest
+        {
+            username = username,
+            password = password
+        };
 
         // Llamar al servicio
         var loginInfo = await _authService.LoginAsync(datos);
@@ -43,16 +59,19 @@ public partial class InicioSesion : ContentPage
             Preferences.Set("accessToken", loginInfo.access);
             Preferences.Set("usuario", loginInfo.username);
             Preferences.Set("rol", loginInfo.rol);
+            Preferences.Set("first_name", loginInfo.first_name);
+            Preferences.Set("last_name", loginInfo.last_name);
 
-            // Redirigir directamente según el rol
-            await RedirigirPorRol(loginInfo.rol);
+            // Redirigir según el rol
+            await RedirigirPorRol(loginInfo.rol, loginInfo.first_name, loginInfo.last_name, loginInfo.access);
 
             LimpiarCampos();
         }
         else
         {
-            // Si deseas mantener un mensaje de error aquí, puedes dejarlo
-            LimpiarCampos();
+            await DisplayAlert("Acceso denegado", "Usuario o contraseña incorrectos.", "Intentar de nuevo");
+            entryClave.Text = string.Empty; // solo limpiamos clave
+            entryClave.Focus();
         }
     }
 
@@ -60,12 +79,10 @@ public partial class InicioSesion : ContentPage
     {
         mostrarClave = !mostrarClave;
         entryClave.IsPassword = !mostrarClave;
-
         btnVerClave.Source = mostrarClave ? "ocultar.png" : "ver.png";
     }
 
-
-    private async Task RedirigirPorRol(string rol)
+    private async Task RedirigirPorRol(string rol, string firstName, string lastName, string token)
     {
         switch (rol.ToLower())
         {
@@ -73,7 +90,7 @@ public partial class InicioSesion : ContentPage
                 await Shell.Current.GoToAsync("//AdministradorPage");
                 break;
             case "mesero":
-                await Shell.Current.GoToAsync("//MeseroPage");
+                await Navigation.PushAsync(new Paginas.Logueo.MeseroPage(firstName, lastName, token));
                 break;
             case "cocinero":
                 await Shell.Current.GoToAsync("//CocineroPage");
@@ -84,8 +101,6 @@ public partial class InicioSesion : ContentPage
         }
     }
 
-
-
     void LimpiarCampos()
     {
         entryUsuario.Text = string.Empty;
@@ -93,6 +108,5 @@ public partial class InicioSesion : ContentPage
         mostrarClave = false;
         entryClave.IsPassword = true;
         btnVerClave.Source = "ver.png";
-
     }
 }

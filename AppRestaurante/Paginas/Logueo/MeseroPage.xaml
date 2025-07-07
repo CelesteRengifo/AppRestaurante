@@ -3,7 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppRestaurante.Paginas.Logueo.MeseroPage"
              Title="Mesero">
-    
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cerrar sesión"
+                     IconImageSource="logout.png"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="CerrarSesion"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
             <GradientStop Color="#3E2723" Offset="0.1" />
@@ -13,42 +21,35 @@
     </ContentPage.Background>
 
     <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="25" VerticalOptions="CenterAndExpand">
+        <Grid Padding="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <!-- Ícono o logo del mesero -->
-            <Image Source="logoinicio.png"
-                   HeightRequest="200"
-                   HorizontalOptions="Center" />
+            <VerticalStackLayout Grid.Row="1" Spacing="25">
 
-            <Label Text="¡Bienvenido, Meserito!"
-                   FontSize="28"
-                   TextColor="#FFF8E1"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+                <Image Source="logoinicio.png"
+                       HeightRequest="200"
+                       HorizontalOptions="Center" />
 
-            <Label Text="Accede al menú y gestiona tus pedidos"
-                   FontSize="14"
-                   TextColor="#D7CCC8"
-                   HorizontalOptions="Center" />
+                <!-- Texto centrado -->
+                <Label x:Name="lblBienvenida"
+                       FontSize="22"
+                       TextColor="#FFF8E1"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center" />
 
-            <!-- Botón para ir al menú -->
-            <Button Text="Ver Menú"
-                    BackgroundColor="#A1887F"
-                    TextColor="White"
-                    CornerRadius="25"
-                    FontAttributes="Bold"
-                    HeightRequest="50"
-                    Clicked="IrAMenu">
-                <Button.Shadow>
-                    <Shadow Brush="Black"
-                            Offset="4,4"
-                            Radius="15"
-                            Opacity="0.3" />
-                </Button.Shadow>
-            </Button>
-
-        </VerticalStackLayout>
+                <Button Text="Menú"
+                        BackgroundColor="#A1887F"
+                        TextColor="White"
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        Clicked="IrAMenu" />
+            </VerticalStackLayout>
+        </Grid>
     </ScrollView>
-
 </ContentPage>
-    
