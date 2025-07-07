@@ -1,35 +1,138 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="AppRestaurante.Paginas.Reportes.ReporteVentasPage"
              Title="Reporte de Ventas"
-             BackgroundColor="#4e342e">
+             BackgroundColor="#4e342e"
+             Padding="20">
+
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+        <VerticalStackLayout Spacing="20" Padding="20">
 
+            <!-- Título -->
             <Label Text="Platos más vendidos"
-                   FontSize="28"
+                   FontSize="32"
                    TextColor="#fff8e1"
-                   FontAttributes="Bold"/>
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
 
-            <CollectionView x:Name="ReporteCollectionView">
+            <!-- Filtro de fechas -->
+            <Border BackgroundColor="#6d4c41"
+                    StrokeThickness="0"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="15">
+
+                <VerticalStackLayout Spacing="15" HorizontalOptions="Center">
+
+                    <Label Text="Filtrar por rango de fechas"
+                           FontSize="20"
+                           TextColor="#ffe0b2"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+
+                    <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+
+                        <!-- Desde -->
+                        <VerticalStackLayout HorizontalOptions="Center">
+                            <Label Text="Desde:"
+                                   FontSize="14"
+                                   TextColor="#fff8e1"
+                                   HorizontalTextAlignment="Center"/>
+                            <Grid WidthRequest="140" HeightRequest="50">
+                                <!-- Label siempre visible -->
+                                <Label x:Name="PlaceholderDesde"
+                                       Text="Seleccionar..."
+                                       TextColor="Gray"
+                                       FontSize="13"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       BackgroundColor="#fff8e1"
+                                       InputTransparent="False">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PlaceholderDesde_Tapped"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <!-- DatePicker invisible -->
+                                <DatePicker x:Name="FechaInicioPicker"
+                                            MaximumDate="{x:Static sys:DateTime.Now}"
+                                            Opacity="0"
+                                            DateSelected="FechaInicioPicker_DateSelected" />
+                            </Grid>
+                        </VerticalStackLayout>
+
+                        <!-- Hasta + escoba -->
+                        <VerticalStackLayout HorizontalOptions="Center">
+                            <Label Text="Hasta:"
+                                   FontSize="14"
+                                   TextColor="#fff8e1"
+                                   HorizontalTextAlignment="Center"/>
+                            <HorizontalStackLayout Spacing="5" VerticalOptions="Center">
+                                <Grid WidthRequest="140" HeightRequest="50">
+                                    <Label x:Name="PlaceholderHasta"
+                                           Text="Seleccionar..."
+                                           TextColor="Gray"
+                                           FontSize="13"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalTextAlignment="Center"
+                                           BackgroundColor="#fff8e1"
+                                           InputTransparent="False">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="PlaceholderHasta_Tapped"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                    <DatePicker x:Name="FechaFinPicker"
+                                                MaximumDate="{x:Static sys:DateTime.Now}"
+                                                Opacity="0"
+                                                DateSelected="FechaFinPicker_DateSelected" />
+                                </Grid>
+
+                                <ImageButton Source="broom.png"
+                                             WidthRequest="30"
+                                             HeightRequest="30"
+                                             BackgroundColor="Transparent"
+                                             Clicked="Limpiar_Clicked"
+                                             VerticalOptions="End"
+                                             ToolTipProperties.Text="Limpiar filtros" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+
+                    <!-- Botón Filtrar -->
+                    <Button Text="Filtrar"
+                            Clicked="Filtrar_Clicked"
+                            BackgroundColor="#795548"
+                            TextColor="White"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            WidthRequest="200" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Lista -->
+            <CollectionView x:Name="ReporteCollectionView"
+                            Margin="0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BackgroundColor="#6d4c41"
-                               CornerRadius="20"
-                               Padding="15"
-                               Margin="0,5"
-                               HasShadow="True">
-                            <VerticalStackLayout>
-                                <Label Text="{Binding Plato}"
-                                       FontSize="20"
-                                       TextColor="#fff8e1"
-                                       FontAttributes="Bold"/>
-                                <Label Text="{Binding CantidadVendida, StringFormat='Cantidad vendida: {0}'}"
-                                       FontSize="16"
-                                       TextColor="#ffe0b2"/>
-                            </VerticalStackLayout>
-                        </Frame>
+                        <Grid Padding="0,10,0,0">
+                            <Border BackgroundColor="#6d4c41"
+                                    StrokeThickness="0"
+                                    StrokeShape="RoundRectangle 20"
+                                    Padding="15">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding Plato}"
+                                           FontSize="20"
+                                           TextColor="#fff8e1"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding CantidadVendida, StringFormat='Cantidad vendida: {0}'}"
+                                           FontSize="16"
+                                           TextColor="#ffe0b2" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
