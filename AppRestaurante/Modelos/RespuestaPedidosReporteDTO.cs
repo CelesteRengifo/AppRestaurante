@@ -8,6 +8,10 @@ namespace AppRestaurante.Modelos
 {
     public class RespuestaPedidosReporteDTO
     {
-        public List<PedidoReporteDTO> Results { get; set; }
+        public int Count { get; set; }
+        public string Next { get; set; }
+        public string Previous { get; set; }
+        public List<PedidoReporteDTO> Results { get; set; } = new();
     }
 }
+

@@ -109,6 +109,15 @@
                             FontAttributes="Bold"
                             HorizontalOptions="Center"
                             WidthRequest="200" />
+                    <Button Text="Ver gráfico"
+                            Clicked="VerGrafico_Clicked"
+                            BackgroundColor="#8d6e63"
+                            TextColor="White"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            WidthRequest="200" />
+
                 </VerticalStackLayout>
             </Border>
 

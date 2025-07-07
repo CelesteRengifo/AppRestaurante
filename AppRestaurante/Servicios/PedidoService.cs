@@ -24,37 +24,46 @@ namespace AppRestaurante.Servicios
 
         public async Task<List<PedidoReporte>> ObtenerPedidosAsync()
         {
-            var pedidosResponse = await _httpClient.GetAsync("pedidos/");
+            var pedidos = new List<PedidoReporte>();
+            int page = 1;
+            bool hayMas = true;
+
             var platosResponse = await _httpClient.GetAsync("platos/");
+            if (!platosResponse.IsSuccessStatusCode)
+                throw new Exception("Error al obtener platos");
 
-            if (!pedidosResponse.IsSuccessStatusCode || !platosResponse.IsSuccessStatusCode)
-                throw new Exception("Error al obtener pedidos o platos");
-
-            var pedidosJson = await pedidosResponse.Content.ReadAsStringAsync();
             var platosJson = await platosResponse.Content.ReadAsStringAsync();
-
             var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-
-            var pedidosDTO = JsonSerializer.Deserialize<RespuestaPedidosReporteDTO>(pedidosJson, options)?.Results ?? new();
             var platosResponseData = JsonSerializer.Deserialize<RespuestaPlatos>(platosJson, options);
             var platos = platosResponseData?.Results ?? new List<Plato>();
 
-
-            // Convertir DTO a PedidoReporte con Plato real
-            var pedidos = pedidosDTO.Select(dto =>
+            while (hayMas)
             {
-                var plato = platos.FirstOrDefault(p => p.Id == dto.Plato);
-                return new PedidoReporte
+                var response = await _httpClient.GetAsync($"pedidos/?page={page}");
+                if (!response.IsSuccessStatusCode) break;
+
+                var pedidosJson = await response.Content.ReadAsStringAsync();
+                var datos = JsonSerializer.Deserialize<RespuestaPedidosReporteDTO>(pedidosJson, options);
+
+                foreach (var dto in datos.Results)
                 {
-                    Id = dto.Id,
-                    Cantidad = dto.Cantidad,
-                    Estado = dto.Estado,
-                    Fecha = dto.Fecha,
-                    Plato = plato ?? new Plato { Id = dto.Plato, Name = $"Plato #{dto.Plato}" }
-                };
-            }).ToList();
+                    var plato = platos.FirstOrDefault(p => p.Id == dto.Plato);
+                    pedidos.Add(new PedidoReporte
+                    {
+                        Id = dto.Id,
+                        Cantidad = dto.Cantidad,
+                        Estado = dto.Estado,
+                        Fecha = dto.Fecha,
+                        Plato = plato ?? new Plato { Id = dto.Plato, Name = $"Plato #{dto.Plato}" }
+                    });
+                }
+
+                hayMas = datos.Next != null;
+                page++;
+            }
 
             return pedidos;
         }
+
     }
 }

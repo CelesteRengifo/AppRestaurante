@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             x:Class="AppRestaurante.Paginas.Reportes.GraficoVentasPage"
+             BackgroundColor="#4e342e"
+             Padding="20">
+
+    <VerticalStackLayout Spacing="20">
+
+        <Label Text="Gráfico de platos vendidos"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="#fff8e1"
+               HorizontalOptions="Center" />
+
+        <chart:SfCartesianChart BackgroundColor="#fff8e1"
+                                HeightRequest="300"
+                                x:Name="GraficoVentas">
+
+            <chart:SfCartesianChart.XAxes>
+                <chart:CategoryAxis>
+                    <chart:CategoryAxis.Title>
+                        <chart:ChartAxisTitle Text="Plato" />
+                    </chart:CategoryAxis.Title>
+                </chart:CategoryAxis>
+            </chart:SfCartesianChart.XAxes>
+
+            <chart:SfCartesianChart.YAxes>
+                <chart:NumericalAxis>
+                    <chart:NumericalAxis.Title>
+                        <chart:ChartAxisTitle Text="Cantidad" />
+                    </chart:NumericalAxis.Title>
+                </chart:NumericalAxis>
+            </chart:SfCartesianChart.YAxes>
+
+            <chart:SfCartesianChart.Series>
+                <chart:ColumnSeries ItemsSource="{Binding Ventas}"
+                                    XBindingPath="Plato"
+                                    YBindingPath="CantidadVendida"
+                                    EnableTooltip="True"
+                                    ShowDataLabels="True" />
+            </chart:SfCartesianChart.Series>
+
+        </chart:SfCartesianChart>
+
+    </VerticalStackLayout>
+</ContentPage>
