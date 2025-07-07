@@ -10,5 +10,6 @@ namespace AppRestaurante.Modelos
     {
         public string Plato { get; set; }
         public int CantidadVendida { get; set; }
+        public DateTime? Fecha { get; set; } // nuevo
     }
 }

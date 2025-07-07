@@ -198,8 +198,18 @@ namespace AppRestaurante.Paginas.Reportes
                 await DisplayAlert("Error inesperado", ex.Message, "OK");
             }
         }
+        private async void IrAExportar_Clicked(object sender, EventArgs e)
+        {
+            if (_ultimoReporte == null || !_ultimoReporte.Any())
+            {
+                await DisplayAlert("Sin datos", "No hay datos para exportar.", "OK");
+                return;
+            }
 
+            DateTime? inicio = _inicioSeleccionado ? FechaInicioPicker.Date : null;
+            DateTime? fin = _finSeleccionado ? FechaFinPicker.Date : null;
 
-
+            await Navigation.PushAsync(new OpcionesExportarPage(_ultimoReporte, inicio, fin));
+        }
     }
 }

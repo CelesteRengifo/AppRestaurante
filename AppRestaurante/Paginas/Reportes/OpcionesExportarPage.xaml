@@ -1,0 +1,65 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRestaurante.Paginas.Reportes.OpcionesExportarPage"
+             BackgroundColor="#4e342e"
+             Padding="30">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25">
+
+            <Label Text="Opciones de exportación"
+                   FontSize="26"
+                   TextColor="#fff8e1"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Label Text="¿Qué deseas incluir?"
+                   FontSize="18"
+                   TextColor="#ffe0b2"
+                   HorizontalOptions="Center" />
+
+            <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+                <Label Text="Fecha exacta"
+                       TextColor="#fff8e1"
+                       VerticalOptions="Center" />
+                <Switch x:Name="FechaSwitch" />
+            </HorizontalStackLayout>
+
+            <Label Text="Formato de exportación:"
+                   FontSize="18"
+                   TextColor="#ffe0b2"
+                   HorizontalOptions="Center" />
+
+            <Button Text="PDF"
+                    Clicked="Exportar_Clicked"
+                    BackgroundColor="#a1887f"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="12" />
+
+            <Button Text="Excel"
+                    Clicked="Exportar_Clicked"
+                    BackgroundColor="#bcaaa4"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="12" />
+
+            <Button Text="CSV"
+                    Clicked="Exportar_Clicked"
+                    BackgroundColor="#d7ccc8"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    CornerRadius="12" />
+
+            <Button Text="Imprimir"
+                    Clicked="Imprimir_Clicked"
+                    BackgroundColor="#efebe9"
+                    TextColor="#3e2723"
+                    FontAttributes="Bold"
+                    CornerRadius="12"
+                    HorizontalOptions="Center"
+                    WidthRequest="200" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
