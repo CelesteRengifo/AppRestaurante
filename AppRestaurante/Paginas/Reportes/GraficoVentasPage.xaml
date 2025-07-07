@@ -6,7 +6,7 @@
              BackgroundColor="#4e342e"
              Padding="20">
 
-    <VerticalStackLayout Spacing="20">
+    <VerticalStackLayout Spacing="15">
 
         <Label Text="Gráfico de platos vendidos"
                FontSize="24"
@@ -14,9 +14,15 @@
                TextColor="#fff8e1"
                HorizontalOptions="Center" />
 
+        <Label x:Name="SubtituloFecha"
+               FontSize="16"
+               TextColor="#fff8e1"
+               HorizontalOptions="Center" />
+
         <chart:SfCartesianChart BackgroundColor="#fff8e1"
                                 HeightRequest="300"
-                                x:Name="GraficoVentas">
+                                x:Name="GraficoVentas"
+                                Margin="0,20,0,20">
 
             <chart:SfCartesianChart.XAxes>
                 <chart:CategoryAxis>
@@ -27,7 +33,7 @@
             </chart:SfCartesianChart.XAxes>
 
             <chart:SfCartesianChart.YAxes>
-                <chart:NumericalAxis>
+                <chart:NumericalAxis Maximum="{Binding MaximoY}">
                     <chart:NumericalAxis.Title>
                         <chart:ChartAxisTitle Text="Cantidad" />
                     </chart:NumericalAxis.Title>
@@ -39,7 +45,11 @@
                                     XBindingPath="Plato"
                                     YBindingPath="CantidadVendida"
                                     EnableTooltip="True"
-                                    ShowDataLabels="True" />
+                                    ShowDataLabels="True">
+                    <chart:ColumnSeries.Fill>
+                        <SolidColorBrush Color="#a1887f" />
+                    </chart:ColumnSeries.Fill>
+                </chart:ColumnSeries>
             </chart:SfCartesianChart.Series>
 
         </chart:SfCartesianChart>

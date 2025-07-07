@@ -7,9 +7,12 @@ namespace AppRestaurante.Paginas.Reportes
     {
         public ObservableCollection<ReporteVenta> Ventas { get; set; }
 
+        public double MaximoY { get; set; }
         private List<ReporteVenta> _reporteOriginal;
+        private readonly DateTime? _fechaInicio;
+        private readonly DateTime? _fechaFin;
 
-        public GraficoVentasPage(List<ReporteVenta> reporte)
+        public GraficoVentasPage(List<ReporteVenta> reporte, DateTime? fechaInicio = null, DateTime? fechaFin = null)
         {
             try
             {
@@ -22,6 +25,8 @@ namespace AppRestaurante.Paginas.Reportes
             }
 
             _reporteOriginal = reporte ?? new List<ReporteVenta>();
+            _fechaInicio = fechaInicio;
+            _fechaFin = fechaFin;
         }
 
         protected override void OnAppearing()
@@ -38,7 +43,29 @@ namespace AppRestaurante.Paginas.Reportes
                 }
             }
 
+            //Calcular máximo del eje Y con espacio extra
+            double valorMaximo = Ventas.Any() ? Ventas.Max(v => v.CantidadVendida) : 0;
+            MaximoY = valorMaximo + 1;
+
             BindingContext = this;
+
+            //Subtítulo dinámico
+            if (_fechaInicio.HasValue && _fechaFin.HasValue)
+            {
+                if (_fechaInicio.Value.Date == _fechaFin.Value.Date)
+                {
+                    SubtituloFecha.Text = $"Reporte del {_fechaInicio.Value:dd/MM/yyyy}";
+                }
+                else
+                {
+                    SubtituloFecha.Text = $"Del {_fechaInicio.Value:dd/MM/yyyy} al {_fechaFin.Value:dd/MM/yyyy}";
+                }
+            }
+            else
+            {
+                SubtituloFecha.Text = "Reporte general del año";
+            }
         }
+
     }
 }

@@ -187,13 +187,18 @@ namespace AppRestaurante.Paginas.Reportes
                     }
                 }
 
-                await Navigation.PushAsync(new GraficoVentasPage(_ultimoReporte));
+                // Pasa las fechas si fueron seleccionadas
+                DateTime? fechaInicio = _inicioSeleccionado ? FechaInicioPicker.Date : (DateTime?)null;
+                DateTime? fechaFin = _finSeleccionado ? FechaFinPicker.Date : (DateTime?)null;
+
+                await Navigation.PushAsync(new GraficoVentasPage(_ultimoReporte, fechaInicio, fechaFin));
             }
             catch (Exception ex)
             {
                 await DisplayAlert("Error inesperado", ex.Message, "OK");
             }
         }
+
 
 
     }
