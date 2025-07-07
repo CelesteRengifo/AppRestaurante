@@ -4,6 +4,7 @@ public partial class MeseroPage : ContentPage
 {
     private string token;
 
+
     public MeseroPage(string firstName, string lastName, string jwtToken)
     {
         InitializeComponent(); // Esto funcionará bien si el XAML no tiene errores
@@ -14,6 +15,7 @@ public partial class MeseroPage : ContentPage
 
         // ?? Esto oculta el botón de retroceso
         Shell.SetBackButtonBehavior(this, new BackButtonBehavior { IsVisible = false });
+        //NavigationPage.SetHasBackButton(this, false);
     }
 
     private async void IrAMenu(object sender, EventArgs e)

@@ -4,7 +4,14 @@
              x:Class="AppRestaurante.Paginas.Logueo.AdminPage"
              BackgroundColor="#3E2723"
              Title="Administrador">
-    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cerrar sesión"
+                 IconImageSource="logout.png"
+                 Order="Primary"
+                 Priority="0"
+                 Clicked="CerrarSesion"/>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
             <GradientStop Color="#3E2723" Offset="0.1" />
@@ -100,6 +107,30 @@
                     FontAttributes="Bold"
                     HeightRequest="50"
                     Clicked="IrAGestionarInsumo">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Text="Reporte de Ventas"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="IrAReporteVentas">
+                <Button.Shadow>
+                    <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
+                </Button.Shadow>
+            </Button>
+
+            <Button Text="Agregar Platos"
+                    BackgroundColor="#A1887F"
+                    TextColor="White"
+                    CornerRadius="25"
+                    FontAttributes="Bold"
+                    HeightRequest="50"
+                    Clicked="AgregarPlatos">
                 <Button.Shadow>
                     <Shadow Brush="Black" Offset="4,4" Radius="15" Opacity="0.3" />
                 </Button.Shadow>
