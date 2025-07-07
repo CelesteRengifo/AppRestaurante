@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppRestaurante.Paginas.Reportes.ReporteVentasPage"
+             Title="Reporte de Ventas"
+             BackgroundColor="#4e342e">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Platos más vendidos"
+                   FontSize="28"
+                   TextColor="#fff8e1"
+                   FontAttributes="Bold"/>
+
+            <CollectionView x:Name="ReporteCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#6d4c41"
+                               CornerRadius="20"
+                               Padding="15"
+                               Margin="0,5"
+                               HasShadow="True">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Plato}"
+                                       FontSize="20"
+                                       TextColor="#fff8e1"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding CantidadVendida, StringFormat='Cantidad vendida: {0}'}"
+                                       FontSize="16"
+                                       TextColor="#ffe0b2"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
