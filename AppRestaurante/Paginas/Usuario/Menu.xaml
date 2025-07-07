@@ -2,28 +2,47 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppRestaurante.Paginas.Usuario.Menu"
-             Title="Carta de Menú">
+             Title="Carta de Menú"
+             BackgroundColor="#3E2723">
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="15">
 
         <!-- Entrada de número de mesa -->
         <VerticalStackLayout Grid.Row="0" Spacing="10">
-            <Label Text="Seleccione una Mesa:" FontSize="18" />
-            <Picker x:Name="MesaPicker"
-            ItemDisplayBinding="{Binding Id}"
-            Title="Seleccione una mesa" />
+            <Label Text="Seleccione una Mesa:"
+                   FontSize="18"
+                   TextColor="#FFF8E1" />
+            <Frame BackgroundColor="#EDE7E0"
+                   CornerRadius="7"
+                   Padding="0"
+                   HasShadow="False">
+                <Picker x:Name="MesaPicker"
+                        ItemDisplayBinding="{Binding Id}"
+                        Title="Seleccione una mesa"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        />
+            </Frame>
         </VerticalStackLayout>
 
         <!-- Lista de platos -->
         <ScrollView Grid.Row="1">
-            <VerticalStackLayout Spacing="10">
-
-                <Label Text="Menú" FontSize="20" FontAttributes="Bold" />
+            <VerticalStackLayout>
+                <Label Text="Menú"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#FFF8E1"
+                       Margin="0,15" />
+                <!-- Espaciado arriba y abajo -->
 
                 <CollectionView x:Name="PlatosCollection" SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame BorderColor="LightGray" CornerRadius="10" Padding="10" Margin="0,5">
+                            <Frame BackgroundColor="#6D4C41"
+                                   BorderColor="#A0887E"
+                                   CornerRadius="10"
+                                   Padding="10"
+                                   Margin="0,5">
                                 <Grid ColumnDefinitions="Auto,*,Auto" Padding="5" ColumnSpacing="10">
 
                                     <!-- Imagen del plato -->
@@ -33,22 +52,24 @@
                                            Aspect="AspectFill"
                                            VerticalOptions="Center"
                                            HorizontalOptions="Start"/>
+
                                     <!-- Información del plato -->
                                     <VerticalStackLayout Grid.Column="1" Padding="10,0">
                                         <Label Text="{Binding Name}" 
                                                FontSize="16"
                                                FontAttributes="Bold"
-                                               TextColor="Black" />
+                                               TextColor="#FFF8E1" />
 
                                         <Label Text="{Binding TextoCantidad}" 
-                                               FontSize="14" />
+                                               FontSize="14"
+                                               TextColor="#FFF8E1" />
 
                                         <Label Text="{Binding Precio, StringFormat='Precio: S/. {0:F2}'}"
                                                FontSize="14"
-                                               TextColor="DarkGreen" />
+                                               TextColor="#A5D6A7" />
                                     </VerticalStackLayout>
 
-                                    <!-- Stepper para cantidad -->
+                                    <!-- Stepper -->
                                     <Stepper Grid.Column="2"
                                              Minimum="0"
                                              Maximum="20"
@@ -69,7 +90,7 @@
         <Button Grid.Row="2"
                 Text="Realizar Pedido"
                 Clicked="OnRealizarPedidoClicked"
-                BackgroundColor="DarkGreen"
+                BackgroundColor="#291A17"
                 TextColor="White"
                 FontAttributes="Bold"
                 Margin="0,10,0,0"/>
