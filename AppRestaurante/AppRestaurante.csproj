@@ -77,6 +77,9 @@
 		<MauiXaml Update="Paginas\Logueo\MeseroPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>
+		<MauiXaml Update="Paginas\Reportes\GraficoVentasPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 		<MauiXaml Update="Paginas\Reportes\ReporteVentasPage.xaml">
 		  <Generator>MSBuild:Compile</Generator>
 		</MauiXaml>

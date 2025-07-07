@@ -1,5 +1,6 @@
-using AppRestaurante.Modelos;
+﻿using AppRestaurante.Modelos;
 using AppRestaurante.Servicios;
+
 
 namespace AppRestaurante.Paginas.Reportes
 {
@@ -7,6 +8,8 @@ namespace AppRestaurante.Paginas.Reportes
     {
         private PedidoService _pedidoService;
         private List<PedidoReporte> _todosLosPedidos;
+        private List<ReporteVenta> _ultimoReporte = new();
+
 
         private bool _inicioSeleccionado = false;
         private bool _finSeleccionado = false;
@@ -37,10 +40,27 @@ namespace AppRestaurante.Paginas.Reportes
             }
         }
 
-        private void MostrarReporte(List<PedidoReporte> pedidos)
+        private async void MostrarReporte(List<PedidoReporte> pedidos)
         {
-            var reporte = pedidos
-                .Where(p => p.Estado.ToLower() == "pagado")
+            if (pedidos == null || pedidos.Count == 0)
+            {
+                await DisplayAlert("Advertencia", "No hay pedidos disponibles.", "OK");
+                return;
+            }
+
+            foreach (var p in pedidos)
+                System.Diagnostics.Debug.WriteLine($"Pedido: {p.Plato.Name} - Estado: '{p.Estado}' - Fecha: {p.Fecha}");
+
+            var pagados = pedidos
+                .Where(p => p.Estado == "pagado")
+                .ToList();
+
+            if (pagados.Count == 0)
+            {
+                await DisplayAlert("Advertencia", "Hay pedidos, pero ninguno tiene estado 'pagado'.", "OK");
+            }
+
+            var reporte = pagados
                 .GroupBy(p => p.Plato.Name)
                 .Select(g => new ReporteVenta
                 {
@@ -50,6 +70,7 @@ namespace AppRestaurante.Paginas.Reportes
                 .OrderByDescending(r => r.CantidadVendida)
                 .ToList();
 
+            _ultimoReporte = reporte;
             ReporteCollectionView.ItemsSource = reporte;
         }
 
@@ -66,15 +87,15 @@ namespace AppRestaurante.Paginas.Reportes
             if (_inicioSeleccionado && _finSeleccionado &&
                 FechaFinPicker.Date < FechaInicioPicker.Date)
             {
-                await DisplayAlert("Rango inv�lido", "La fecha 'Hasta' no puede ser menor que la fecha 'Desde'.", "OK");
+                await DisplayAlert("Rango inválido", "La fecha 'Hasta' no puede ser menor que la fecha 'Desde'.", "OK");
                 ResetearFechas();
                 return;
             }
 
             var pedidosFiltrados = _todosLosPedidos
                 .Where(p =>
-                    (!_inicioSeleccionado || p.Fecha.Date >= FechaInicioPicker.Date) &&
-                    (!_finSeleccionado || p.Fecha.Date <= FechaFinPicker.Date))
+                    (!_inicioSeleccionado || p.Fecha.ToLocalTime().Date >= FechaInicioPicker.Date) &&
+                    (!_finSeleccionado || p.Fecha.ToLocalTime().Date <= FechaFinPicker.Date))
                 .ToList();
 
             if (pedidosFiltrados.Count == 0)
@@ -85,6 +106,7 @@ namespace AppRestaurante.Paginas.Reportes
 
             MostrarReporte(pedidosFiltrados);
         }
+
 
         private void Limpiar_Clicked(object sender, EventArgs e)
         {
@@ -99,6 +121,8 @@ namespace AppRestaurante.Paginas.Reportes
 
             MostrarReporte(_todosLosPedidos);
         }
+
+
 
         private void FechaInicioPicker_DateSelected(object sender, DateChangedEventArgs e)
         {
@@ -143,12 +167,39 @@ namespace AppRestaurante.Paginas.Reportes
             PlaceholderDesde.Text = "Seleccionar...";
             PlaceholderHasta.Text = "Seleccionar...";
         }
+        private async void VerGrafico_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_ultimoReporte == null || !_ultimoReporte.Any())
+                {
+                    await DisplayAlert("Sin datos", "No hay datos para mostrar en el gráfico.", "OK");
+                    return;
+                }
 
-    }
+                // Verifica datos antes de pasar
+                foreach (var item in _ultimoReporte)
+                {
+                    if (item == null || string.IsNullOrWhiteSpace(item.Plato))
+                    {
+                        await DisplayAlert("Error de datos", "Hay elementos inválidos en el reporte.", "OK");
+                        return;
+                    }
+                }
 
-    public class ReporteVenta
-    {
-        public string Plato { get; set; }
-        public int CantidadVendida { get; set; }
+                // Pasa las fechas si fueron seleccionadas
+                DateTime? fechaInicio = _inicioSeleccionado ? FechaInicioPicker.Date : (DateTime?)null;
+                DateTime? fechaFin = _finSeleccionado ? FechaFinPicker.Date : (DateTime?)null;
+
+                await Navigation.PushAsync(new GraficoVentasPage(_ultimoReporte, fechaInicio, fechaFin));
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error inesperado", ex.Message, "OK");
+            }
+        }
+
+
+
     }
 }

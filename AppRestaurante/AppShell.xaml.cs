@@ -1,4 +1,5 @@
-﻿namespace AppRestaurante
+﻿using AppRestaurante.Paginas.Reportes;  
+namespace AppRestaurante
 {
     public partial class AppShell : Shell
     {
