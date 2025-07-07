@@ -9,21 +9,27 @@
 
         <!-- Entrada de número de mesa -->
         <VerticalStackLayout Grid.Row="0" Spacing="10">
+            <Label x:Name="DiaLabel"
+           FontSize="18"
+           TextColor="#FFF8E1"
+           FontAttributes="Bold" />
+
             <Label Text="Seleccione una Mesa:"
-                   FontSize="18"
-                   TextColor="#FFF8E1" />
+           FontSize="18"
+           TextColor="#FFF8E1" />
+
             <Frame BackgroundColor="#EDE7E0"
-                   CornerRadius="7"
-                   Padding="0"
-                   HasShadow="False">
+           CornerRadius="7"
+           Padding="0"
+           HasShadow="False">
                 <Picker x:Name="MesaPicker"
-                        ItemDisplayBinding="{Binding Id}"
-                        Title="Seleccione una mesa"
-                        BackgroundColor="Transparent"
-                        TextColor="Black"
-                        />
+                ItemDisplayBinding="{Binding Id}"
+                Title="Seleccione una mesa"
+                BackgroundColor="Transparent"
+                TextColor="Black" />
             </Frame>
         </VerticalStackLayout>
+
 
         <!-- Lista de platos -->
         <ScrollView Grid.Row="1">
