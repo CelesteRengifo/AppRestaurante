@@ -35,4 +35,28 @@ public partial class AdminPage : ContentPage
     {
         await Navigation.PushAsync(new Paginas.Inventario.GestionarInsumos());
     }
+
+    private async void IrAReporteVentas(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Paginas.Reportes.ReporteVentasPage());
+    }
+
+    private async void AgregarPlatos(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Paginas.Usuario.AgregarPlatos());
+    }
+
+    private async void CerrarSesion(object sender, EventArgs e)
+    {
+        bool confirm = await DisplayAlert("Cerrar sesión", "¿Deseas salir de la sesión?", "Sí", "No");
+        if (confirm)
+        {
+            Preferences.Remove("accessToken");
+            Preferences.Remove("usuario");
+            Preferences.Remove("rol");
+
+            // Volver a la página de inicio
+            await Shell.Current.GoToAsync("//InicioSesion");
+        }
+    }
 }
