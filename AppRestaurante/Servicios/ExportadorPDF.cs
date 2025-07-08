@@ -7,6 +7,7 @@ using PdfSharpCore.Drawing;
 using PdfSharpCore.Pdf;
 using System.Globalization;
 using AppRestaurante.Modelos;
+using PdfSharpCore.Fonts;
 
 namespace AppRestaurante.Servicios
 {
@@ -14,12 +15,20 @@ namespace AppRestaurante.Servicios
     {
         public async Task<string> GenerarReportePDFAsync(List<ReporteVenta> datos, DateTime? inicio = null, DateTime? fin = null, bool incluirFecha = false)
         {
+            // 👉 Registrar el resolver solo si aún no está registrado
+            if (GlobalFontSettings.FontResolver == null)
+            {
+                GlobalFontSettings.FontResolver = new CustomFontResolver();
+            }
+
             var documento = new PdfDocument();
             var pagina = documento.AddPage();
             var gfx = XGraphics.FromPdfPage(pagina);
-            var fuenteTitulo = new XFont("Verdana", 18, XFontStyle.Bold);
-            var fuenteSubtitulo = new XFont("Verdana", 12, XFontStyle.Regular);
-            var fuenteContenido = new XFont("Verdana", 10, XFontStyle.Regular);
+
+            // ✅ Usa la fuente OpenSans embebida
+            var fuenteTitulo = new XFont("OpenSans", 18, XFontStyle.Bold);
+            var fuenteSubtitulo = new XFont("OpenSans", 12, XFontStyle.Regular);
+            var fuenteContenido = new XFont("OpenSans", 10, XFontStyle.Regular);
 
             double y = 40;
 
@@ -55,5 +64,6 @@ namespace AppRestaurante.Servicios
 
             return ruta;
         }
+
     }
 }
